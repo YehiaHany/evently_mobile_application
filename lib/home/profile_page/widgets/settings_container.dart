@@ -25,7 +25,7 @@ class _SettingsContainerState extends State<SettingsContainer> {
             themeProvider.isDarkMode() ? ThemeMode.light : ThemeMode.dark);
       },
       child: Container(
-        height: 48,
+        height: 47,
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0 /*16*/),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
