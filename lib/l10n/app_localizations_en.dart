@@ -26,6 +26,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get john_safwat => 'John Safwat';
+
+  @override
   String get home => 'Home';
 
   @override

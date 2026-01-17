@@ -26,6 +26,8 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get john_safwat => 'جون صفوت';
+
+  @override
   String get home => 'الرئيسية';
 
   @override

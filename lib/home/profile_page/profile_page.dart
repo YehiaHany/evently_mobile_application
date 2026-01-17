@@ -31,7 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               Image.asset(AppAssets.profilePic),
               Text(
-                "John Safwat",
+                AppLocalizations.of(context)!.john_safwat,
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
               Text(
