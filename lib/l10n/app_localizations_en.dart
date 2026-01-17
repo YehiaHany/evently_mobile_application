@@ -26,6 +26,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get john_safwat => 'John Safwat';
+  String get home => 'Home';
+
+  @override
+  String get favourite => 'Favourite';
+
+  @override
+  String get profile => 'profile';
 
   @override
   String get log_out => 'Logout';

@@ -130,6 +130,23 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'John Safwat'**
   String get john_safwat;
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @favourite.
+  ///
+  /// In en, this message translates to:
+  /// **'Favourite'**
+  String get favourite;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'profile'**
+  String get profile;
 
   /// No description provided for @log_out.
   ///

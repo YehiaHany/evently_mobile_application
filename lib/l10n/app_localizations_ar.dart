@@ -26,6 +26,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get john_safwat => 'جون صفوت';
+  String get home => 'الرئيسية';
+
+  @override
+  String get favourite => 'المفضلة';
+
+  @override
+  String get profile => 'الملف الشخصي';
 
   @override
   String get log_out => 'تسجيل الخروج';

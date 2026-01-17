@@ -5,5 +5,8 @@
   "dark_mode": "DarkMode",
   "light_mode": "LightMode",
   "john_safwat": "John Safwat",
+  "home": "Home",
+  "favourite": "Favourite",
+  "profile": "profile",
   "log_out": "Logout"
 }
