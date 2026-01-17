@@ -1,4 +1,5 @@
 import 'package:evently/core/utils/app_assets.dart';
+import 'package:evently/core/utils/device_dimensions.dart';
 import 'package:evently/home/profile_page/widgets/language_container.dart';
 import 'package:evently/home/profile_page/widgets/settings_container.dart';
 import 'package:flutter/material.dart';
@@ -11,16 +12,20 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: context.height * 0.036,
+            horizontal: context.width * 0.04,
+          ),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
             child: Column(
-              spacing: 16,
+              mainAxisAlignment: MainAxisAlignment.start,
+              spacing: context.height * 0.018,
               children: [
                 Image.asset(AppAssets.profilePic),
                 Text(
@@ -31,11 +36,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   "johnsafwat.route@gmail.com",
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: context.height * 0.018),
                 SettingsContainer(),
                 LanguageContainer(),
-                
-
               ],
             ),
           ),

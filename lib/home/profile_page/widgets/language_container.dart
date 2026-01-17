@@ -28,9 +28,12 @@ class _LanguageContainerState extends State<LanguageContainer> {
         setState(() {});
       },
       child: Container(
+        height: 48,
         padding: EdgeInsets.only(
-          top: 4,
-          bottom: 4,
+          // top: 4,
+          // bottom: 4,
+          top: 0,
+          bottom: 0,
           left: langProvider.appLanguage == "en" ? 16 : 4,
           right: langProvider.appLanguage == "en" ? 4 : 16,
         ),
