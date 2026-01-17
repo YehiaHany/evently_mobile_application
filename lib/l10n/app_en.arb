@@ -1,5 +1,8 @@
 {
   "language": "Language",
   "english": "English",
-  "arabic": "Arabic"
+  "arabic": "Arabic",
+  "dark_mode": "DarkMode",
+  "light_mode": "LightMode",
+  "log_out": "LogOut"
 }

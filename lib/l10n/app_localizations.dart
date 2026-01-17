@@ -112,6 +112,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Arabic'**
   String get arabic;
+
+  /// No description provided for @dark_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'DarkMode'**
+  String get dark_mode;
+
+  /// No description provided for @light_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'LightMode'**
+  String get light_mode;
+
+  /// No description provided for @log_out.
+  ///
+  /// In en, this message translates to:
+  /// **'LogOut'**
+  String get log_out;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
