@@ -2,6 +2,7 @@ import 'package:evently/core/utils/app_routes.dart';
 import 'package:evently/core/utils/app_theme.dart';
 import 'package:evently/home/favourite_page/favourite_page.dart';
 import 'package:evently/home/home_page/home_page.dart';
+import 'package:evently/home/main_page.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/providers/language_provider.dart';
 import 'package:evently/providers/theme_provider.dart';
@@ -38,10 +39,11 @@ class MyApp extends StatelessWidget {
         AppRoutes.profileScreen: (context) => ProfilePage(),
         AppRoutes.homeScreen: (context) => HomePage(),
         AppRoutes.favouriteScreen: (context) => FavouritePage(),
+        AppRoutes.mainScreen: (context) => MainPage(),
 
 
       },
-      initialRoute: AppRoutes.profileScreen,
+      initialRoute: AppRoutes.mainScreen,
     );
   }
 }

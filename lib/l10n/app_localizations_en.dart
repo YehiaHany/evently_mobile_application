@@ -25,5 +25,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get light_mode => 'LightMode';
 
   @override
+  String get home => 'Home';
+
+  @override
+  String get favourite => 'Favourite';
+
+  @override
+  String get profile => 'profile';
+
+  @override
   String get log_out => 'Logout';
 }

@@ -4,5 +4,8 @@
   "arabic": "Arabic",
   "dark_mode": "DarkMode",
   "light_mode": "LightMode",
+  "home": "Home",
+  "favourite": "Favourite",
+  "profile": "profile",
   "log_out": "Logout"
 }
