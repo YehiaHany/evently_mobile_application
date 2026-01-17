@@ -7,14 +7,14 @@ import 'package:provider/provider.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../providers/language_provider.dart';
 
-class SettingsContainer extends StatefulWidget {
-  const SettingsContainer({super.key});
+class ThemeModeContainer extends StatefulWidget {
+  const ThemeModeContainer({super.key});
 
   @override
-  State<SettingsContainer> createState() => _SettingsContainerState();
+  State<ThemeModeContainer> createState() => _ThemeModeContainerState();
 }
 
-class _SettingsContainerState extends State<SettingsContainer> {
+class _ThemeModeContainerState extends State<ThemeModeContainer> {
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);

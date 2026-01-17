@@ -1,7 +1,8 @@
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/core/utils/device_dimensions.dart';
 import 'package:evently/home/profile_page/widgets/language_container.dart';
-import 'package:evently/home/profile_page/widgets/settings_container.dart';
+import 'package:evently/home/profile_page/widgets/logout_container.dart';
+import 'package:evently/home/profile_page/widgets/theme_mode_container.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -37,8 +38,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 SizedBox(height: context.height * 0.018),
-                SettingsContainer(),
+                ThemeModeContainer(),
                 LanguageContainer(),
+                LogoutContainer(),
               ],
             ),
           ),

@@ -128,7 +128,7 @@ abstract class AppLocalizations {
   /// No description provided for @log_out.
   ///
   /// In en, this message translates to:
-  /// **'LogOut'**
+  /// **'Logout'**
   String get log_out;
 }
 
