@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../../core/utils/app_colors.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../../providers/language_provider.dart';
+import '../../../providers/theme_provider.dart';
 
 class LanguageContainer extends StatefulWidget {
   const LanguageContainer({super.key});
@@ -18,6 +20,7 @@ class _LanguageContainerState extends State<LanguageContainer> {
   @override
   Widget build(BuildContext context) {
     LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     return GestureDetector(
       onTap: () {
         languageMenuKey.currentState?.showButtonMenu();
@@ -33,8 +36,17 @@ class _LanguageContainerState extends State<LanguageContainer> {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: AppColors.white,
-          border: Border.all(color: AppColors.offWhite, width: 1),
+          color:
+          themeProvider.isDarkMode()
+              ? AppColors.blueVeryDark
+              : AppColors.white,
+          border: Border.all(
+            color:
+            themeProvider.isDarkMode()
+                ? AppColors.blueDark
+                : AppColors.offWhite,
+            width: 1,
+          ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,11 +71,15 @@ class _LanguageContainerState extends State<LanguageContainer> {
                 });
               },
               key: languageMenuKey,
-              color: AppColors.white,
+              color: themeProvider.isDarkMode()
+                  ? AppColors.blueVeryDark
+                  : AppColors.white,
               clipBehavior: Clip.antiAlias,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
-                side: BorderSide(color: AppColors.offWhite, width: 2),
+                side: BorderSide(color: themeProvider.isDarkMode()
+                    ? AppColors.blueDark
+                    : AppColors.offWhite, width: 2),
               ),
               onSelected: (value) {
                 Future.delayed(Duration(milliseconds: 200), () {
@@ -81,7 +97,9 @@ class _LanguageContainerState extends State<LanguageContainer> {
                         : 0,
                 child: Icon(
                   Icons.arrow_forward_ios,
-                  color: AppColors.primaryBlue,
+                  color: themeProvider.isDarkMode()
+                      ? AppColors.blueAccent
+                      : AppColors.primaryBlue,
                 ),
               ),
               position: PopupMenuPosition.under,
@@ -102,7 +120,8 @@ class _LanguageContainerState extends State<LanguageContainer> {
                             visible: langProvider.appLanguage == "en",
                             child: Icon(
                               Icons.check,
-                              color: AppColors.successGreen,
+                              color: themeProvider.isDarkMode() ? AppColors
+                                  .blueAccent : AppColors.primaryBlue,
                               size: 18,
                             ),
                           ),
@@ -124,7 +143,8 @@ class _LanguageContainerState extends State<LanguageContainer> {
                             visible: langProvider.appLanguage == "ar",
                             child: Icon(
                               Icons.check,
-                              color: AppColors.successGreen,
+                              color: themeProvider.isDarkMode() ? AppColors
+                                  .blueAccent : AppColors.primaryBlue,
                               size: 18,
                             ),
                           ),

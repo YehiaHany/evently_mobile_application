@@ -1,10 +1,7 @@
 import 'package:evently/core/utils/app_assets.dart';
-import 'package:evently/core/utils/app_colors.dart';
 import 'package:evently/home/profile_page/widgets/language_container.dart';
-import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/providers/language_provider.dart';
+import 'package:evently/home/profile_page/widgets/settings_container.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -35,6 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 SizedBox(height: 16),
+                SettingsContainer(),
                 LanguageContainer(),
                 
 
