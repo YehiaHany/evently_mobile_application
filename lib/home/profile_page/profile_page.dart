@@ -5,6 +5,8 @@ import 'package:evently/home/profile_page/widgets/logout_container.dart';
 import 'package:evently/home/profile_page/widgets/theme_mode_container.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -30,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 Image.asset(AppAssets.profilePic),
                 Text(
-                  "John Safwat",
+                  AppLocalizations.of(context)!.john_safwat,
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 Text(
