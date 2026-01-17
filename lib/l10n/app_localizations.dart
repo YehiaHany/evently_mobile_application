@@ -125,6 +125,11 @@ abstract class AppLocalizations {
   /// **'LightMode'**
   String get light_mode;
 
+  /// No description provided for @john_safwat.
+  ///
+  /// In en, this message translates to:
+  /// **'John Safwat'**
+  String get john_safwat;
   /// No description provided for @home.
   ///
   /// In en, this message translates to:

@@ -25,6 +25,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get light_mode => 'الوضع النهارى';
 
   @override
+  String get john_safwat => 'جون صفوت';
   String get home => 'الرئيسية';
 
   @override
