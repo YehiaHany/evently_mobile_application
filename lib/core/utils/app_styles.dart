@@ -40,13 +40,13 @@ class AppStyles{
     fontWeight: FontWeight.w400,
     color: AppColors.grayBorder,
   );
-  static final TextStyle regular16GrayDark = GoogleFonts.poppins(
-    fontSize: 16,
+  static final TextStyle regular17GrayDark = GoogleFonts.poppins(
+    fontSize: 17,
     fontWeight: FontWeight.w400,
     color: AppColors.grayDark,
   );
-  static final TextStyle regular16GrayLight = GoogleFonts.poppins(
-    fontSize: 16,
+  static final TextStyle regular17GrayLight = GoogleFonts.poppins(
+    fontSize: 17,
     fontWeight: FontWeight.w400,
     color: AppColors.grayBorder,
   );

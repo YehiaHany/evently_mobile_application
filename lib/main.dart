@@ -3,13 +3,14 @@ import 'package:evently/core/utils/app_theme.dart';
 import 'package:evently/home/favourite_page/favourite_page.dart';
 import 'package:evently/home/home_page/home_page.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/on_boarding_page/on_boarding_page.dart';
+import 'package:evently/on_boarding_page/on_boarding_starting_page.dart';
 import 'package:evently/providers/language_provider.dart';
 import 'package:evently/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'home/profile_page/profile_page.dart';
+import 'on_boarding_page/on_boarding_page.dart';
 
 void main() {
   runApp( MultiProvider(
@@ -39,11 +40,12 @@ class MyApp extends StatelessWidget {
         AppRoutes.profileScreen: (context) => ProfilePage(),
         AppRoutes.homeScreen: (context) => HomePage(),
         AppRoutes.favouriteScreen: (context) => FavouritePage(),
+        AppRoutes.onBoardingStartScreen: (context) => OnBoardingStartingPage(),
         AppRoutes.onBoardingScreen: (context) => OnBoardingPage(),
 
 
       },
-      initialRoute: AppRoutes.onBoardingScreen,
+      initialRoute: AppRoutes.onBoardingStartScreen,
     );
   }
 }
