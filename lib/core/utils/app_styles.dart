@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:evently/core/utils/app_colors.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppStyles{
@@ -13,14 +13,40 @@ class AppStyles{
     fontWeight: FontWeight.w600,
     color: AppColors.white,
   );
+  static final TextStyle semiBold14white = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.white,
+  );
 
   static final TextStyle regular14GrayDark = GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w400,
     color: AppColors.grayDark,
   );
+  static final TextStyle regular14Blue = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.primaryBlue,
+  );
+  static final TextStyle regular14White = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
+  );
+
   static final TextStyle regular14GrayLight = GoogleFonts.poppins(
     fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.grayBorder,
+  );
+  static final TextStyle regular16GrayDark = GoogleFonts.poppins(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.grayDark,
+  );
+  static final TextStyle regular16GrayLight = GoogleFonts.poppins(
+    fontSize: 16,
     fontWeight: FontWeight.w400,
     color: AppColors.grayBorder,
   );
@@ -31,6 +57,21 @@ class AppStyles{
   );
   static final TextStyle medium16white = GoogleFonts.poppins(
     fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+  );
+  static final TextStyle medium18Blue = GoogleFonts.poppins(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primaryBlue,
+  );
+  static final TextStyle medium18White = GoogleFonts.poppins(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+  );
+  static final TextStyle medium20White = GoogleFonts.poppins(
+    fontSize: 20,
     fontWeight: FontWeight.w500,
     color: AppColors.white,
   );
