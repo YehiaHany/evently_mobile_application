@@ -25,6 +25,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get light_mode => 'الوضع النهارى';
 
   @override
+  String get john_safwat => 'جون صفوت';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get favourite => 'المفضلة';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
   String get log_out => 'تسجيل الخروج';
 
   @override

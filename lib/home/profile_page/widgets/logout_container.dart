@@ -41,8 +41,9 @@ class LogoutContainer extends StatelessWidget {
               AppLocalizations.of(context)!.log_out,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            Transform.flip(flipY: langProvider.appLanguage == "ar",
+            Transform.flip(
                 flipX: langProvider.appLanguage == "ar",
+                flipY: langProvider.appLanguage == "ar",
                 child: SvgPicture.asset(AppAssets.logOutIcon)),
           ],
         ),

@@ -5,6 +5,8 @@ import 'package:evently/home/profile_page/widgets/logout_container.dart';
 import 'package:evently/home/profile_page/widgets/theme_mode_container.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -15,34 +17,32 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: context.height * 0.036,
-            horizontal: context.width * 0.04,
-          ),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              spacing: context.height * 0.018,
-              children: [
-                Image.asset(AppAssets.profilePic),
-                Text(
-                  "John Safwat",
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-                Text(
-                  "johnsafwat.route@gmail.com",
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                SizedBox(height: context.height * 0.018),
-                ThemeModeContainer(),
-                LanguageContainer(),
-                LogoutContainer(),
-              ],
-            ),
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: context.height * 0.036,
+          horizontal: context.width * 0.04,
+        ),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            spacing: context.height * 0.018,
+            children: [
+              Image.asset(AppAssets.profilePic),
+              Text(
+                AppLocalizations.of(context)!.john_safwat,
+                style: Theme.of(context).textTheme.headlineLarge,
+              ),
+              Text(
+                "johnsafwat.route@gmail.com",
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              SizedBox(height: context.height * 0.018),
+              ThemeModeContainer(),
+              LanguageContainer(),
+              LogoutContainer(),
+            ],
           ),
         ),
       ),

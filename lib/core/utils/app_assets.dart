@@ -13,4 +13,13 @@ class AppAssets{
   static const darkBeingCreative2 = "${baseUrl}being-creative-dark-2.png";
   static const darkBeingCreative3 = "${baseUrl}being-creative-dark3.png";
   static const darkHotTrending = "${baseUrl}hot-trending-dark.png";
+  static const homeIcon = "${baseUrl}home";
+  static const heartIcon = "${baseUrl}heart";
+  static const userIcon = "${baseUrl}user";
+  static const homeSelectedIcon = "${baseUrl}homeSelected";
+  static const heartSelectedIcon = "${baseUrl}heartSelected";
+  static const userSelectedIcon = "${baseUrl}userSelected";
+  static const homeSelectedDarkIcon = "${baseUrl}homeSelectedDark";
+  static const heartSelectedDarkIcon = "${baseUrl}heartSelectedDark";
+  static const userSelectedDarkIcon = "${baseUrl}userSelectedDark";
 }
