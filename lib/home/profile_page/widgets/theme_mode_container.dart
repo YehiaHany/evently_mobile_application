@@ -41,8 +41,7 @@ class _ThemeModeContainerState extends State<ThemeModeContainer> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(themeProvider.isDarkMode() ? AppLocalizations.of(context)!
-                .dark_mode : AppLocalizations.of(context)!.light_mode,
+            Text(AppLocalizations.of(context)!.dark_mode,
               style: Theme
                   .of(context)
                   .textTheme

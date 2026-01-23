@@ -21,5 +21,14 @@
   "home": "الرئيسية",
   "favourite": "المفضلة",
   "profile": "الملف الشخصي",
+  "welcome_back": "مرحبا بعودتك ✨",
+  "all": "الكل",
+  "sport": "رياضة",
+  "exhibition": "معرض",
+  "bookClub": "نادي الكتاب",
+  "meeting": "اجتماع",
+  "birthday": "عيد ميلاد",
+  "no_events_found": "القائمة فارغة",
+  "search_for_event": "ابحث عن فعالية",
   "log_out": "تسجيل الخروج"
 }

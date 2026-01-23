@@ -21,5 +21,14 @@
   "home": "Home",
   "favourite": "Favourite",
   "profile": "profile",
+  "welcome_back": "Welcome Back ✨",
+  "all": "All",
+  "sport": "Sport",
+  "exhibition": "Exhibition",
+  "bookClub": "Book Club",
+  "meeting": "Meeting",
+  "birthday": "Birthday",
+  "no_events_found": "No Events Found",
+  "search_for_event": "Search for event",
   "log_out": "Logout"
 }

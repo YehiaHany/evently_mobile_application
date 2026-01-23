@@ -7,6 +7,7 @@ import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_routes.dart';
 import '../../core/utils/app_styles.dart';
 import '../../providers/theme_provider.dart';
+import '../../utils.dart';
 
 class PageTop extends StatelessWidget {
   int currentIndex;
@@ -78,7 +79,8 @@ class PageTop extends StatelessWidget {
             : Image.asset(AppAssets.lightEventlyLogo),
         GestureDetector(
           onTap: () {
-            Navigator.of(context).pushReplacementNamed(AppRoutes.homeScreen);
+            Navigator.of(context).pushReplacementNamed(AppRoutes.mainScreen);
+            setIsFirstTime();
           },
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
