@@ -3,6 +3,12 @@ class AppAssets{
   static const profilePic = "${baseUrl}Profile pic.png";
   static const logOutIcon = "${baseUrl}logout.svg";
   static const arrowIcon = "${baseUrl}arrow-left.svg";
+  static const sunIcon = "${baseUrl}sun.svg";
+  static const primaryBlueSunIcon = "${baseUrl}primary_blue_sun.svg";
+  static const moonIcon = "${baseUrl}moon.svg";
+  static const bikeIcon = "${baseUrl}bike.svg";
+  static const birthdayCakeIcon = "${baseUrl}birthday_cake.svg";
+  static const allIcon = "${baseUrl}element-3.svg";
   static const lightEventlyLogo = "${baseUrl}light_evently_logo.png";
   static const lightBeingCreative1 = "${baseUrl}being-creative1.png";
   static const lightBeingCreative2 = "${baseUrl}being-creative2.png";
@@ -22,4 +28,16 @@ class AppAssets{
   static const homeSelectedDarkIcon = "${baseUrl}homeSelectedDark";
   static const heartSelectedDarkIcon = "${baseUrl}heartSelectedDark";
   static const userSelectedDarkIcon = "${baseUrl}userSelectedDark";
+  static const exhibitionImage = "${baseUrl}Exhibition.png";
+  static const birthdayImage = "${baseUrl}Birthday.png";
+  static const meetingImage = "${baseUrl}Meeting.png";
+  static const sportImage = "${baseUrl}Sport.png";
+  static const bookClubImage = "${baseUrl}Book Club.png";
+  static const exhibitionDarkImage = "${baseUrl}Exhibition_Dark.png";
+  static const birthdayDarkImage = "${baseUrl}Birthday_Dark.png";
+  static const meetingDarkImage = "${baseUrl}Meeting_Dark.png";
+  static const sportDarkImage = "${baseUrl}Sport_Dark.png";
+  static const bookClubDarkImage = "${baseUrl}Book_Club_Dark.png";
+  static const emptyListAnimation = "assets/animation/empty loading state.json";
+  static const searchIcon = "${baseUrl}search-normal.svg";
 }

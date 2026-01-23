@@ -17,10 +17,18 @@
   "letsStart": "لنبدأ",
   "next": "التالي",
   "getStarted": "ابدأ الآن",
-  "skip": "تخطي"
+  "skip": "تخطي",
   "john_safwat": "جون صفوت",
   "home": "الرئيسية",
   "favourite": "المفضلة",
   "profile": "الملف الشخصي",
-  "log_out": "تسجيل الخروج"
+  "welcome_back": "مرحبا بعودتك ✨",
+  "all": "الكل",
+  "sport": "رياضة",
+  "exhibition": "معرض",
+  "bookClub": "نادي الكتاب",
+  "meeting": "اجتماع",
+  "birthday": "عيد ميلاد",
+  "no_events_found": "القائمة فارغة",
+  "search_for_event": "ابحث عن فعالية"
 }

@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -25,18 +24,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get light_mode => 'الوضع النهارى';
 
   @override
-  String get john_safwat => 'جون صفوت';
-
-  @override
-  String get home => 'الرئيسية';
-
-  @override
-  String get favourite => 'المفضلة';
-
-  @override
-  String get profile => 'الملف الشخصي';
-
-  @override
   String get log_out => 'تسجيل الخروج';
 
   @override
@@ -46,29 +33,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get personalizeTitle => 'خصص تجربتك';
 
   @override
-  String get personalizeDescription =>
-      'اختر المظهر واللغة اللذين تفضلهما لتبدأ تجربة مريحة ومخصصة تناسب أسلوبك الخاص.';
+  String get personalizeDescription => 'اختر المظهر واللغة اللذين تفضلهما لتبدأ تجربة مريحة ومخصصة تناسب أسلوبك الخاص.';
 
   @override
   String get findEventsTitle => 'ابحث عن الفعاليات التي تلهمك';
 
   @override
-  String get findEventsDescription =>
-      'غُص في عالم من الفعاليات المصممة لتناسب اهتماماتك الفريدة. سواء كنت من محبي الموسيقى الحية، أو ورش العمل الفنية، أو التواصل المهني، أو ببساطة اكتشاف تجارب جديدة، فلدينا ما يناسب الجميع. ستساعدك توصياتنا المختارة على الاستكشاف والتواصل والاستفادة القصوى من كل فرصة من حولك.';
+  String get findEventsDescription => 'غُص في عالم من الفعاليات المصممة لتناسب اهتماماتك الفريدة. سواء كنت من محبي الموسيقى الحية، أو ورش العمل الفنية، أو التواصل المهني، أو ببساطة اكتشاف تجارب جديدة، فلدينا ما يناسب الجميع. ستساعدك توصياتنا المختارة على الاستكشاف والتواصل والاستفادة القصوى من كل فرصة من حولك.';
 
   @override
   String get effortlessPlanningTitle => 'تخطيط فعاليات بدون مجهود';
 
   @override
-  String get effortlessPlanningDescription =>
-      'تخلص من عناء تنظيم الفعاليات مع أدوات التخطيط الشاملة لدينا. بدءاً من إعداد الدعوات وإدارة تأكيدات الحضور، وصولاً إلى جدولة التذكيرات وتنسيق التفاصيل؛ نحن نتولى المهمة بدلاً عنك. خطط بكل سهولة وركز على ما يهم حقاً – خلق تجربة لا تُنسى لك ولضيوفك.';
+  String get effortlessPlanningDescription => 'تخلص من عناء تنظيم الفعاليات مع أدوات التخطيط الشاملة لدينا. بدءاً من إعداد الدعوات وإدارة تأكيدات الحضور، وصولاً إلى جدولة التذكيرات وتنسيق التفاصيل؛ نحن نتولى المهمة بدلاً عنك. خطط بكل سهولة وركز على ما يهم حقاً – خلق تجربة لا تُنسى لك ولضيوفك.';
 
   @override
   String get connectWithFriendsTitle => 'تواصل مع الأصدقاء وشارك اللحظات';
 
   @override
-  String get connectWithFriendsDescription =>
-      'اجعل كل فعالية ذكرى لا تُنسى من خلال مشاركة التجربة مع الآخرين. تتيح لك منصتنا دعوة الأصدقاء، وإبقاء الجميع على اطلاع، والاحتفال باللحظات معاً. التقط وشارك الحماس مع شبكتك، لكي تتمكن من استعادة أجمل اللحظات والاعتزاز بالذكريات.';
+  String get connectWithFriendsDescription => 'اجعل كل فعالية ذكرى لا تُنسى من خلال مشاركة التجربة مع الآخرين. تتيح لك منصتنا دعوة الأصدقاء، وإبقاء الجميع على اطلاع، والاحتفال باللحظات معاً. التقط وشارك الحماس مع شبكتك، لكي تتمكن من استعادة أجمل اللحظات والاعتزاز بالذكريات.';
 
   @override
   String get letsStart => 'لنبدأ';
@@ -81,4 +64,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get skip => 'تخطي';
+
+  @override
+  String get john_safwat => 'جون صفوت';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get favourite => 'المفضلة';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get welcome_back => 'مرحبا بعودتك ✨';
+
+  @override
+  String get all => 'الكل';
+
+  @override
+  String get sport => 'رياضة';
+
+  @override
+  String get exhibition => 'معرض';
+
+  @override
+  String get bookClub => 'نادي الكتاب';
+
+  @override
+  String get meeting => 'اجتماع';
+
+  @override
+  String get birthday => 'عيد ميلاد';
+
+  @override
+  String get no_events_found => 'القائمة فارغة';
+
+  @override
+  String get search_for_event => 'ابحث عن فعالية';
 }

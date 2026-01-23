@@ -17,10 +17,18 @@
   "letsStart": "Let’s start",
   "next": "Next",
   "getStarted": "Get started",
-  "skip": "Skip"
+  "skip": "Skip",
   "john_safwat": "John Safwat",
   "home": "Home",
   "favourite": "Favourite",
   "profile": "profile",
-  "log_out": "Logout"
+  "welcome_back": "Welcome Back ✨",
+  "all": "All",
+  "sport": "Sport",
+  "exhibition": "Exhibition",
+  "bookClub": "Book Club",
+  "meeting": "Meeting",
+  "birthday": "Birthday",
+  "no_events_found": "No Events Found",
+  "search_for_event": "Search for event"
 }

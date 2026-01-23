@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/utils/app_routes.dart';
 import '../../l10n/app_localizations.dart';
+import '../../utils.dart';
 
 class BottomButton extends StatelessWidget {
   int currentIndex;
@@ -20,7 +21,8 @@ class BottomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         if (currentIndex == 2) {
-          Navigator.of(context).pushReplacementNamed(AppRoutes.homeScreen);
+          Navigator.of(context).pushReplacementNamed(AppRoutes.mainScreen);
+          setIsFirstTime();
         } else {
           pageController.nextPage(
             duration: Duration(milliseconds: 390),

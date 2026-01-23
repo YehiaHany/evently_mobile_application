@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.backgroundLight,
+    colorScheme: ColorScheme.light(
+      primary: AppColors.primaryBlue,
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: AppColors.white,
         unselectedItemColor: AppColors.grayLight,
@@ -21,6 +24,9 @@ class AppTheme {
       titleSmall: AppStyles.regular14Blue,
       labelLarge: AppStyles.medium20White,
       labelMedium: AppStyles.semiBold14white,
+      labelSmall: AppStyles.medium20Black,
+      bodyMedium: AppStyles.semiBold16PrimaryBlue,
+      bodySmall: AppStyles.medium14Black,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -35,6 +41,9 @@ class AppTheme {
   );
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.backgroundDark,
+    colorScheme: ColorScheme.dark(
+      primary: AppColors.blueAccent,
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: AppColors.backgroundDark,
         unselectedItemColor: AppColors.grayLight,
@@ -44,13 +53,17 @@ class AppTheme {
     ),
     textTheme: TextTheme(
       headlineLarge: AppStyles.semiBold20white,
-      headlineMedium: AppStyles.medium16white,
+      headlineMedium: AppStyles.medium16White,
       headlineSmall: AppStyles.regular14GrayLight,
       titleLarge: AppStyles.medium18White,
       titleMedium: AppStyles.regular17GrayLight,
       titleSmall: AppStyles.regular14White,
       labelLarge: AppStyles.medium20White,
       labelMedium: AppStyles.semiBold14white,
+      labelSmall: AppStyles.medium20White,
+      bodyMedium: AppStyles.semiBold16BlueAccent,
+      bodySmall: AppStyles.medium14White,
+
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
