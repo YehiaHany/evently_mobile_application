@@ -26,7 +26,7 @@ class _EventTabBarState extends State<EventTabBar> {
     LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
     eventNameList = TabBarModel.getEventNameList(context);
     return DefaultTabController(
-      length: 6,
+      length: eventNameList.length,
       child: TabBar(
         tabAlignment: TabAlignment.start,
         labelPadding: EdgeInsets.only(

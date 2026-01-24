@@ -1,3 +1,4 @@
+import 'package:evently/core/utils/device_dimensions.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -42,7 +43,8 @@ class PageTop extends StatelessWidget {
             }
           },
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            padding: EdgeInsets.symmetric(
+                horizontal: context.width * 0.02, vertical: 8),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color:

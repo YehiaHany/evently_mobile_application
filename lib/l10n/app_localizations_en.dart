@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -114,6 +115,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forget_password_title => 'Forget Password';
 
   @override
+  String get add_event_title => 'Add event';
+
+  @override
   String get name_hint => 'Enter your name';
 
   @override
@@ -126,6 +130,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get confirm_password_hint => 'Confirm your password';
 
   @override
+  String get event_title_label => 'Title';
+
+  @override
+  String get event_title_hint => 'Event Title';
+
+  @override
+  String get event_description_label => 'Description';
+
+  @override
+  String get event_description_hint => 'Event Description...';
+
+  @override
+  String get event_date => 'Event Date';
+
+  @override
+  String get event_time => 'Event Time';
+
+  @override
+  String get choose_date => 'Choose date';
+
+  @override
+  String get choose_time => 'Choose time';
+
+  @override
   String get forget_password_link => 'Forget Password?';
 
   @override
@@ -136,6 +164,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reset_password_button => 'Reset password';
+
+  @override
+  String get add_event_button => 'Add event';
 
   @override
   String get donot_have_account => 'Don\'t have an account ?';
@@ -157,4 +188,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get signup_with_google => 'Sign up with Google';
+
+  @override
+  String get event_details_title => 'Event details';
 }

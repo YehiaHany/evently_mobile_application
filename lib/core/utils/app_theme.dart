@@ -8,6 +8,10 @@ class AppTheme {
     colorScheme: ColorScheme.light(
       primary: AppColors.primaryBlue,
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      shape: StadiumBorder(),
+      foregroundColor: AppColors.white,
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: AppColors.white,
         unselectedItemColor: AppColors.grayLight,
@@ -43,6 +47,10 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.backgroundDark,
     colorScheme: ColorScheme.dark(
       primary: AppColors.blueAccent,
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      shape: StadiumBorder(),
+      foregroundColor: AppColors.white,
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: AppColors.backgroundDark,

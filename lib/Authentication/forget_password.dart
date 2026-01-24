@@ -7,7 +7,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import '../core/utils/app_assets.dart';
-import '../providers/language_provider.dart';
 import '../providers/theme_provider.dart';
 
 class ForgetPassword extends StatelessWidget {
@@ -18,9 +17,7 @@ class ForgetPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-    LanguageProvider languageProvider = Provider.of<LanguageProvider>(context);
     bool isDark = themeProvider.isDarkMode();
-    bool isEnglish = languageProvider.appLanguage == "en";
     return Scaffold(
       body: SafeArea(
         child: Padding(
