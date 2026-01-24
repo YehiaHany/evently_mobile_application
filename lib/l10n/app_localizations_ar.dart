@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -139,7 +138,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get reset_password_button => 'إعادة تعيين كلمة المرور';
 
   @override
-  String get donot_have_account => 'Don\'t have an account ?';
+  String get donot_have_account => 'ليس لديك حساب؟';
 
   @override
   String get already_have_account => 'لديك حساب بالفعل؟';
