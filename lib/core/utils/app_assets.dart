@@ -46,4 +46,8 @@ class AppAssets{
   static const eyeIcon = "${baseUrl}eye.svg";
   static const googleIcon = "${baseUrl}googleIcon.png";
   static const changeSettingImage = "${baseUrl}change-setting.png";
+  static const calendarAddIcon = "${baseUrl}calendar-add.svg";
+  static const clockIcon = "${baseUrl}clock.svg";
+  static const trashIcon = "${baseUrl}trash.svg";
+  static const editIcon = "${baseUrl}edit.svg";
 }

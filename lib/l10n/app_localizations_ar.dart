@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -114,6 +115,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get forget_password_title => 'نسيت كلمة المرور';
 
   @override
+  String get add_event_title => 'إضافة فعالية';
+
+  @override
   String get name_hint => 'أدخل اسمك';
 
   @override
@@ -126,6 +130,30 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirm_password_hint => 'تأكيد كلمة المرور';
 
   @override
+  String get event_title_label => 'العنوان';
+
+  @override
+  String get event_title_hint => 'عنوان الفعالية';
+
+  @override
+  String get event_description_label => 'الوصف';
+
+  @override
+  String get event_description_hint => 'وصف الفعالية...';
+
+  @override
+  String get event_date => 'تاريخ الفعالية';
+
+  @override
+  String get event_time => 'وقت الفعالية';
+
+  @override
+  String get choose_date => 'اختر التاريخ';
+
+  @override
+  String get choose_time => 'اختر الوقت';
+
+  @override
   String get forget_password_link => 'نسيت كلمة المرور؟';
 
   @override
@@ -136,6 +164,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get reset_password_button => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get add_event_button => 'إضافة فعالية';
 
   @override
   String get donot_have_account => 'ليس لديك حساب؟';
@@ -157,4 +188,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get signup_with_google => 'إنشاء حساب باستخدام جوجل';
+
+  @override
+  String get event_details_title => 'تفاصيل الفعالية';
 }

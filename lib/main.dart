@@ -3,6 +3,8 @@ import 'package:evently/core/utils/app_colors.dart';
 import 'package:evently/core/utils/app_routes.dart';
 import 'package:evently/core/utils/app_theme.dart';
 import 'package:evently/home/favourite_page/favourite_page.dart';
+import 'package:evently/home/home_page/add_event/add_event.dart';
+import 'package:evently/home/home_page/event_details/event_details.dart';
 import 'package:evently/home/home_page/home_page.dart';
 import 'package:evently/home/main_page.dart';
 import 'package:evently/l10n/app_localizations.dart';
@@ -72,10 +74,13 @@ class _MyAppState extends State<MyApp> {
         AppRoutes.loginScreen: (context) => Login(),
         AppRoutes.registerScreen: (context) => Register(),
         AppRoutes.forgetPasswordScreen: (context) => ForgetPassword(),
+        AppRoutes.addEventScreen: (context) => AddEvent(),
+        AppRoutes.eventDetailsScreen: (context) => EventDetails(),
+
 
       },
-      initialRoute: isFirstTime! ? AppRoutes
-          .loginScreen : AppRoutes.onBoardingStartScreen,
+      initialRoute: isFirstTime! ? AppRoutes.onBoardingStartScreen : AppRoutes
+          .loginScreen,
     );
   }
 }

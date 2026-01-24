@@ -110,6 +110,16 @@ class AppStyles{
     fontWeight: FontWeight.w500,
     color: AppColors.primaryBlue,
   );
+  static final TextStyle medium16GrayLight = GoogleFonts.poppins(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.grayLight,
+  );
+  static final TextStyle medium16GrayBorder = GoogleFonts.poppins(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.grayBorder,
+  );
   static final TextStyle medium16BlueAccent = GoogleFonts.poppins(
     fontSize: 16,
     fontWeight: FontWeight.w500,
@@ -130,6 +140,7 @@ class AppStyles{
     fontWeight: FontWeight.w500,
     color: AppColors.white,
   );
+
   static final TextStyle medium18BlueAccent = GoogleFonts.poppins(
     fontSize: 18,
     fontWeight: FontWeight.w500,

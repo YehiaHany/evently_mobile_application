@@ -305,6 +305,12 @@ abstract class AppLocalizations {
   /// **'Forget Password'**
   String get forget_password_title;
 
+  /// No description provided for @add_event_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Add event'**
+  String get add_event_title;
+
   /// No description provided for @name_hint.
   ///
   /// In en, this message translates to:
@@ -329,6 +335,54 @@ abstract class AppLocalizations {
   /// **'Confirm your password'**
   String get confirm_password_hint;
 
+  /// No description provided for @event_title_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get event_title_label;
+
+  /// No description provided for @event_title_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Title'**
+  String get event_title_hint;
+
+  /// No description provided for @event_description_label.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get event_description_label;
+
+  /// No description provided for @event_description_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Description...'**
+  String get event_description_hint;
+
+  /// No description provided for @event_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Date'**
+  String get event_date;
+
+  /// No description provided for @event_time.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Time'**
+  String get event_time;
+
+  /// No description provided for @choose_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose date'**
+  String get choose_date;
+
+  /// No description provided for @choose_time.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose time'**
+  String get choose_time;
+
   /// No description provided for @forget_password_link.
   ///
   /// In en, this message translates to:
@@ -352,6 +406,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reset password'**
   String get reset_password_button;
+
+  /// No description provided for @add_event_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Add event'**
+  String get add_event_button;
 
   /// No description provided for @donot_have_account.
   ///
@@ -394,6 +454,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign up with Google'**
   String get signup_with_google;
+
+  /// No description provided for @event_details_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Event details'**
+  String get event_details_title;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

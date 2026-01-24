@@ -33,8 +33,11 @@ class CustomTextField extends StatefulWidget {
   final dynamic prefixIcon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final int? maxLines;
+  final bool isEnabled;
   bool obscure;
   bool isPassword;
+
 
   CustomTextField({
     super.key,
@@ -61,7 +64,9 @@ class CustomTextField extends StatefulWidget {
     this.controller,
     this.validator,
     this.obscure = false,
-    this.isPassword = false
+    this.isPassword = false,
+    this.maxLines,
+    this.isEnabled = true
   });
 
   @override
@@ -75,6 +80,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
     final isDark = themeProvider.isDarkMode();
 
     return TextFormField(
+      enabled: widget.isEnabled,
+      onTapOutside: (event) {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      maxLines: widget.maxLines ?? 1,
       obscureText: widget.obscure,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: widget.controller,
@@ -93,6 +103,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
             : (widget.fillLight ?? AppColors.white),
 
         enabledBorder: _buildBorder(
+          isDark,
+          widget.borderLight ?? AppColors.offWhite,
+          widget.borderDark ?? AppColors.blueDark,
+        ),
+        disabledBorder: _buildBorder(
           isDark,
           widget.borderLight ?? AppColors.offWhite,
           widget.borderDark ?? AppColors.blueDark,
