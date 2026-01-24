@@ -1,4 +1,5 @@
 import 'package:evently/core/utils/app_assets.dart';
+import 'package:evently/core/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,10 @@ class LogoutContainer extends StatelessWidget {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        //todo:logoutFunction
+        Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
+      },
       child: Container(
         height: 48,
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0 /*16*/),

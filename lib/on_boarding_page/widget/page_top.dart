@@ -1,3 +1,4 @@
+import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -79,7 +80,7 @@ class PageTop extends StatelessWidget {
             : Image.asset(AppAssets.lightEventlyLogo),
         GestureDetector(
           onTap: () {
-            Navigator.of(context).pushReplacementNamed(AppRoutes.mainScreen);
+            Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
             setIsFirstTime();
           },
           child: Container(
@@ -104,7 +105,7 @@ class PageTop extends StatelessWidget {
               ),
             ),
             child: Text(
-              "Skip",
+              AppLocalizations.of(context)!.skip,
               style: AppStyles.semiBold14white.copyWith(
                 color:
                     currentIndex == 2

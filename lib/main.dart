@@ -74,8 +74,8 @@ class _MyAppState extends State<MyApp> {
         AppRoutes.forgetPasswordScreen: (context) => ForgetPassword(),
 
       },
-      initialRoute: isFirstTime! ? AppRoutes.onBoardingStartScreen : AppRoutes
-          .loginScreen,
+      initialRoute: isFirstTime! ? AppRoutes
+          .loginScreen : AppRoutes.onBoardingStartScreen,
     );
   }
 }

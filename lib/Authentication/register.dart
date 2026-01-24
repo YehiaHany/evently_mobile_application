@@ -74,6 +74,7 @@ class Register extends StatelessWidget {
                   obscure: true,
                   prefixIcon: AppAssets.lockIcon,
                   prefixColorLight: AppColors.grayLight,
+                  prefixColorDark: AppColors.grayLight,
                   suffixIcon: AppAssets.eyeIcon,
                   suffixColorLight: AppColors.grayLight,
                   suffixColorDark: AppColors.grayLight,
@@ -88,6 +89,7 @@ class Register extends StatelessWidget {
                   obscure: true,
                   prefixIcon: AppAssets.lockIcon,
                   prefixColorLight: AppColors.grayLight,
+                  prefixColorDark: AppColors.grayLight,
                   suffixIcon: AppAssets.eyeIcon,
                   suffixColorLight: AppColors.grayLight,
                   suffixColorDark: AppColors.grayLight,
@@ -130,9 +132,13 @@ class Register extends StatelessWidget {
                             isDark
                                 ? AppStyles.semiBold14BlueAccent.copyWith(
                                   decoration: TextDecoration.underline,
+                                  decorationColor: AppColors.blueAccent,
                                 )
                                 : AppStyles.semiBold14PrimeBlue.copyWith(
                                   decoration: TextDecoration.underline,
+                                  decorationColor:
+                                      AppColors
+                                          .primaryBlue, // Set the underline color
                                 ),
                       ),
                     ),
@@ -153,12 +159,8 @@ class Register extends StatelessWidget {
                       AppLocalizations.of(context)!.or_divider,
                       style:
                           isDark
-                              ? AppStyles.semiBold16BlueAccent.copyWith(
-                                decoration: TextDecoration.underline,
-                              )
-                              : AppStyles.semiBold16PrimaryBlue.copyWith(
-                                decoration: TextDecoration.underline,
-                              ),
+                              ? AppStyles.medium16BlueAccent
+                              : AppStyles.medium16PrimaryBlue,
                     ),
                     Expanded(
                       child: Divider(
