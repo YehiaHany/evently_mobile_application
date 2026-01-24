@@ -40,4 +40,10 @@ class AppAssets{
   static const bookClubDarkImage = "${baseUrl}Book_Club_Dark.png";
   static const emptyListAnimation = "assets/animation/empty loading state.json";
   static const searchIcon = "${baseUrl}search-normal.svg";
+  static const smsIcon = "${baseUrl}sms.svg";
+  static const lockIcon = "${baseUrl}lock.svg";
+  static const eyeSlashIcon = "${baseUrl}eye-slash.svg";
+  static const eyeIcon = "${baseUrl}eye.svg";
+  static const googleIcon = "${baseUrl}googleIcon.png";
+  static const changeSettingImage = "${baseUrl}change-setting.png";
 }
