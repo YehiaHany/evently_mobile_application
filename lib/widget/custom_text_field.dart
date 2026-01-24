@@ -5,8 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/theme_provider.dart';
+import '../core/utils/app_assets.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextField extends StatefulWidget {
   final String? hintText;
   final TextStyle? hintStyleLight;
   final TextStyle? hintStyleDark;
@@ -17,6 +18,13 @@ class CustomTextField extends StatelessWidget {
   final Color? cursorDark;
   final Color? borderLight;
   final Color? borderDark;
+
+  // New Color Attributes for Icons
+  final Color? prefixColorLight;
+  final Color? prefixColorDark;
+  final Color? suffixColorLight;
+  final Color? suffixColorDark;
+
   final double borderRadius;
   final EdgeInsetsGeometry suffixPadding;
   final EdgeInsetsGeometry prefixPadding;
@@ -25,8 +33,10 @@ class CustomTextField extends StatelessWidget {
   final dynamic prefixIcon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  bool obscure;
+  bool isPassword;
 
-  const CustomTextField({
+  CustomTextField({
     super.key,
     this.hintText,
     this.hintStyleLight,
@@ -38,6 +48,10 @@ class CustomTextField extends StatelessWidget {
     this.cursorDark,
     this.borderLight,
     this.borderDark,
+    this.prefixColorLight,
+    this.prefixColorDark,
+    this.suffixColorLight,
+    this.suffixColorDark,
     this.borderRadius = 16.0,
     this.suffixPadding = const EdgeInsets.symmetric(horizontal: 16),
     this.prefixPadding = const EdgeInsets.symmetric(horizontal: 16),
@@ -46,62 +60,63 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     this.controller,
     this.validator,
+    this.obscure = false,
+    this.isPassword = false
   });
 
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final isDark = themeProvider.isDarkMode();
 
     return TextFormField(
+      obscureText: widget.obscure,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      //If you want the error to disappear the moment the user starts typing correctly
-      controller: controller,
-      validator: validator,
-      style: textStyle ?? Theme.of(context).textTheme.bodySmall,
-      cursorColor:
-          isDark
-              ? (cursorDark ?? AppColors.blueAccent)
-              : (cursorLight ?? AppColors.primaryBlue),
+      controller: widget.controller,
+      validator: widget.validator,
+      style: widget.textStyle ?? Theme
+          .of(context)
+          .textTheme
+          .bodySmall,
+      cursorColor: isDark
+          ? (widget.cursorDark ?? AppColors.blueAccent)
+          : (widget.cursorLight ?? AppColors.primaryBlue),
       decoration: InputDecoration(
         filled: true,
-        fillColor:
-            isDark
-                ? (fillDark ?? AppColors.blueVeryDark)
-                : (fillLight ?? AppColors.white),
+        fillColor: isDark
+            ? (widget.fillDark ?? AppColors.blueVeryDark)
+            : (widget.fillLight ?? AppColors.white),
 
         enabledBorder: _buildBorder(
           isDark,
-          borderLight ?? AppColors.offWhite,
-          borderDark ?? AppColors.blueDark,
+          widget.borderLight ?? AppColors.offWhite,
+          widget.borderDark ?? AppColors.blueDark,
         ),
         focusedBorder: _buildBorder(
           isDark,
-          borderLight ?? AppColors.offWhite,
-          borderDark ?? AppColors.blueDark,
+          widget.borderLight ?? AppColors.offWhite,
+          widget.borderDark ?? AppColors.blueDark,
         ),
         errorBorder: _buildBorder(
-          isDark,
-          AppColors.errorRed,
-          AppColors.errorRed,
-        ),
+            isDark, AppColors.errorRed, AppColors.errorRed),
         focusedErrorBorder: _buildBorder(
-          isDark,
-          AppColors.errorRed,
-          AppColors.errorRed,
-        ),
+            isDark, AppColors.errorRed, AppColors.errorRed),
 
-        hintText: hintText ?? "",
-        hintStyle:
-            isDark
-                ? (hintStyleDark ?? AppStyles.regular14GrayBorder)
-                : (hintStyleLight ?? AppStyles.regular14GrayDark),
+        hintText: widget.hintText ?? "",
+        hintStyle: isDark
+            ? (widget.hintStyleDark ?? AppStyles.regular14GrayBorder)
+            : (widget.hintStyleLight ?? AppStyles.regular14GrayDark),
 
-        prefixIcon: _getIcon(prefixIcon, isDark, false),
-        suffixIcon: _getIcon(suffixIcon, isDark, true),
+        prefixIcon: _getIcon(widget.prefixIcon, isDark, false),
+        suffixIcon: _getIcon(widget.suffixIcon, isDark, true),
 
-        prefixIconConstraints: BoxConstraints(minHeight: minHeight),
-        suffixIconConstraints: BoxConstraints(minHeight: minHeight),
+        prefixIconConstraints: BoxConstraints(minHeight: widget.minHeight),
+        suffixIconConstraints: BoxConstraints(minHeight: widget.minHeight),
       ),
     );
   }
@@ -109,35 +124,63 @@ class CustomTextField extends StatelessWidget {
   Widget? _getIcon(dynamic iconSource, bool isDark, bool isSuffix) {
     if (iconSource == null) return null;
 
+    Color iconColor;
+    if (isSuffix) {
+      iconColor = isDark
+          ? (widget.suffixColorDark ?? AppColors.blueAccent)
+          : (widget.suffixColorLight ?? AppColors.primaryBlue);
+    } else {
+      iconColor = isDark
+          ? (widget.prefixColorDark ?? AppColors.blueAccent)
+          : (widget.prefixColorLight ?? AppColors.primaryBlue);
+    }
+
     Widget child;
     if (iconSource is String) {
       child = SvgPicture.asset(
         iconSource,
-        colorFilter: ColorFilter.mode(
-          isDark ? AppColors.blueAccent : AppColors.primaryBlue,
-          BlendMode.srcIn,
-        ),
+        colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
       );
     } else if (iconSource is Widget) {
-      child = iconSource;
+      child = IconTheme(
+        data: IconThemeData(color: iconColor),
+        child: iconSource,
+      );
     } else {
       return null;
     }
+    if (widget.isPassword && isSuffix) {
+      return GestureDetector(
+        onTap: () {
+          widget.obscure = !widget.obscure;
+          setState(() {
 
-    return Padding(
-      padding: isSuffix ? suffixPadding : prefixPadding,
+          });
+        },
+        child: Padding(
+            padding: isSuffix ? widget.suffixPadding : widget.prefixPadding,
+            child: SvgPicture.asset(
+              widget.obscure ? AppAssets.eyeSlashIcon : AppAssets.eyeIcon,
+              colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+            )
+        ),
+      );
+    }
+    else {
+      return Padding(
+        padding: isSuffix ? widget.suffixPadding : widget.prefixPadding,
       child: child,
     );
+    }
   }
 
-  OutlineInputBorder _buildBorder(
-    bool isDark,
-    Color lightColor,
-    Color darkColor,
-  ) {
+  OutlineInputBorder _buildBorder(bool isDark, Color lightColor,
+      Color darkColor) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(borderRadius),
+      borderRadius: BorderRadius.circular(widget.borderRadius),
       borderSide: BorderSide(width: 1, color: isDark ? darkColor : lightColor),
     );
   }
+
+
 }

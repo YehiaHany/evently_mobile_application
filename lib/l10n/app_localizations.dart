@@ -125,12 +125,6 @@ abstract class AppLocalizations {
   /// **'LightMode'**
   String get light_mode;
 
-  /// No description provided for @log_out.
-  ///
-  /// In en, this message translates to:
-  /// **'Logout'**
-  String get log_out;
-
   /// No description provided for @theme.
   ///
   /// In en, this message translates to:
@@ -286,6 +280,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search for event'**
   String get search_for_event;
+
+  /// No description provided for @log_out.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get log_out;
+
+  /// No description provided for @login_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Login to your account'**
+  String get login_title;
+
+  /// No description provided for @create_account_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your account'**
+  String get create_account_title;
+
+  /// No description provided for @forget_password_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget Password'**
+  String get forget_password_title;
+
+  /// No description provided for @name_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your name'**
+  String get name_hint;
+
+  /// No description provided for @email_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email'**
+  String get email_hint;
+
+  /// No description provided for @password_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your password'**
+  String get password_hint;
+
+  /// No description provided for @confirm_password_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your password'**
+  String get confirm_password_hint;
+
+  /// No description provided for @forget_password_link.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget Password?'**
+  String get forget_password_link;
+
+  /// No description provided for @login_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login_button;
+
+  /// No description provided for @signup_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get signup_button;
+
+  /// No description provided for @reset_password_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset password'**
+  String get reset_password_button;
+
+  /// No description provided for @donot_have_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account ?'**
+  String get donot_have_account;
+
+  /// No description provided for @already_have_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get already_have_account;
+
+  /// No description provided for @signup_link.
+  ///
+  /// In en, this message translates to:
+  /// **'Signup'**
+  String get signup_link;
+
+  /// No description provided for @login_link.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login_link;
+
+  /// No description provided for @or_divider.
+  ///
+  /// In en, this message translates to:
+  /// **'Or'**
+  String get or_divider;
+
+  /// No description provided for @login_with_google.
+  ///
+  /// In en, this message translates to:
+  /// **'Login with Google'**
+  String get login_with_google;
+
+  /// No description provided for @signup_with_google.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up with Google'**
+  String get signup_with_google;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

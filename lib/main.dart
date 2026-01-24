@@ -1,3 +1,4 @@
+import 'package:evently/Authentication/forget_password.dart';
 import 'package:evently/core/utils/app_colors.dart';
 import 'package:evently/core/utils/app_routes.dart';
 import 'package:evently/core/utils/app_theme.dart';
@@ -12,6 +13,8 @@ import 'package:evently/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'Authentication/login.dart';
+import 'Authentication/register.dart';
 import 'home/profile_page/profile_page.dart';
 import 'on_boarding_page/on_boarding_page.dart';
 
@@ -66,9 +69,13 @@ class _MyAppState extends State<MyApp> {
         AppRoutes.onBoardingStartScreen: (context) => OnBoardingStartingPage(),
         AppRoutes.onBoardingScreen: (context) => OnBoardingPage(),
         AppRoutes.mainScreen: (context) => MainPage(),
+        AppRoutes.loginScreen: (context) => Login(),
+        AppRoutes.registerScreen: (context) => Register(),
+        AppRoutes.forgetPasswordScreen: (context) => ForgetPassword(),
+
       },
       initialRoute: isFirstTime! ? AppRoutes.onBoardingStartScreen : AppRoutes
-          .mainScreen,
+          .loginScreen,
     );
   }
 }

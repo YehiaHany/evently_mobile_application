@@ -30,5 +30,24 @@
   "birthday": "Birthday",
   "no_events_found": "No Events Found",
   "search_for_event": "Search for event",
-  "log_out": "Logout"
+  "log_out": "Logout",
+  "login_title": "Login to your account",
+  "create_account_title": "Create your account",
+  "forget_password_title": "Forget Password",
+  "name_hint": "Enter your name",
+  "email_hint": "Enter your email",
+  "password_hint": "Enter your password",
+  "confirm_password_hint": "Confirm your password",
+  "forget_password_link": "Forget Password?",
+  "login_button": "Login",
+  "signup_button": "Sign up",
+  "reset_password_button": "Reset password",
+  "donot_have_account": "Don't have an account ?",
+  "already_have_account": "Already have an account?",
+  "signup_link": "Signup",
+  "login_link": "Login",
+  "or_divider": "Or",
+  "login_with_google": "Login with Google",
+  "signup_with_google": "Sign up with Google"
+
 }

@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -22,9 +23,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get light_mode => 'الوضع النهارى';
-
-  @override
-  String get log_out => 'تسجيل الخروج';
 
   @override
   String get theme => 'النمط';
@@ -103,4 +101,61 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get search_for_event => 'ابحث عن فعالية';
+
+  @override
+  String get log_out => 'تسجيل الخروج';
+
+  @override
+  String get login_title => 'تسجيل الدخول إلى حسابك';
+
+  @override
+  String get create_account_title => 'إنشاء حساب جديد';
+
+  @override
+  String get forget_password_title => 'نسيت كلمة المرور';
+
+  @override
+  String get name_hint => 'أدخل اسمك';
+
+  @override
+  String get email_hint => 'أدخل بريدك الإلكتروني';
+
+  @override
+  String get password_hint => 'أدخل كلمة المرور';
+
+  @override
+  String get confirm_password_hint => 'تأكيد كلمة المرور';
+
+  @override
+  String get forget_password_link => 'نسيت كلمة المرور؟';
+
+  @override
+  String get login_button => 'تسجيل الدخول';
+
+  @override
+  String get signup_button => 'إنشاء حساب';
+
+  @override
+  String get reset_password_button => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get donot_have_account => 'Don\'t have an account ?';
+
+  @override
+  String get already_have_account => 'لديك حساب بالفعل؟';
+
+  @override
+  String get signup_link => 'إنشاء حساب';
+
+  @override
+  String get login_link => 'تسجيل الدخول';
+
+  @override
+  String get or_divider => 'أو';
+
+  @override
+  String get login_with_google => 'تسجيل الدخول باستخدام جوجل';
+
+  @override
+  String get signup_with_google => 'إنشاء حساب باستخدام جوجل';
 }

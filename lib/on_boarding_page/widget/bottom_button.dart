@@ -21,7 +21,7 @@ class BottomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         if (currentIndex == 2) {
-          Navigator.of(context).pushReplacementNamed(AppRoutes.mainScreen);
+          Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
           setIsFirstTime();
         } else {
           pageController.nextPage(

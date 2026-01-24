@@ -1,5 +1,6 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
+
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -22,9 +23,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get light_mode => 'LightMode';
-
-  @override
-  String get log_out => 'Logout';
 
   @override
   String get theme => 'Theme';
@@ -103,4 +101,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get search_for_event => 'Search for event';
+
+  @override
+  String get log_out => 'Logout';
+
+  @override
+  String get login_title => 'Login to your account';
+
+  @override
+  String get create_account_title => 'Create your account';
+
+  @override
+  String get forget_password_title => 'Forget Password';
+
+  @override
+  String get name_hint => 'Enter your name';
+
+  @override
+  String get email_hint => 'Enter your email';
+
+  @override
+  String get password_hint => 'Enter your password';
+
+  @override
+  String get confirm_password_hint => 'Confirm your password';
+
+  @override
+  String get forget_password_link => 'Forget Password?';
+
+  @override
+  String get login_button => 'Login';
+
+  @override
+  String get signup_button => 'Sign up';
+
+  @override
+  String get reset_password_button => 'Reset password';
+
+  @override
+  String get donot_have_account => 'Don\'t have an account ?';
+
+  @override
+  String get already_have_account => 'Already have an account?';
+
+  @override
+  String get signup_link => 'Signup';
+
+  @override
+  String get login_link => 'Login';
+
+  @override
+  String get or_divider => 'Or';
+
+  @override
+  String get login_with_google => 'Login with Google';
+
+  @override
+  String get signup_with_google => 'Sign up with Google';
 }
