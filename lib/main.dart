@@ -13,6 +13,7 @@ import 'package:evently/providers/language_provider.dart';
 import 'package:evently/providers/theme_provider.dart';
 import 'package:evently/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 
 import 'Authentication/login.dart';
@@ -21,6 +22,11 @@ import 'home/profile_page/profile_page.dart';
 import 'on_boarding_page/on_boarding_page.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  FlutterNativeSplash.preserve(
+    widgetsBinding: WidgetsBinding.instance,
+  );
   runApp( MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => LanguageProvider()),
@@ -38,28 +44,38 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool? isFirstTime;
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    initializeIsFirstTime();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      initializeApp();
+    });
   }
 
-  Future<void> initializeIsFirstTime() async {
+  Future<void> initializeApp() async {
+    final themeProvider = context.read<ThemeProvider>();
+    final langProvider = context.read<LanguageProvider>();
+    await themeProvider.getAppTheme();
+    await langProvider.getAppLanguage();
     isFirstTime = await getIsFirstTime();
+    if (!mounted) return;
+    FlutterNativeSplash.remove();
     setState(() {});
   }
   @override
   Widget build(BuildContext context) {
-    LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-    return isFirstTime == null ? CircularProgressIndicator(
-      color: themeProvider.isDarkMode() ? AppColors.blueAccent : AppColors
-          .primaryBlue,) : MaterialApp(
+    LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
+    return isFirstTime == null || themeProvider.appTheme == null ||
+        langProvider.appLanguage == null ? Material(
+      child: CircularProgressIndicator(
+        color: themeProvider.isDarkMode() ? AppColors.blueAccent : AppColors
+            .primaryBlue,),
+    ) : MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: Locale(langProvider.appLanguage),
+      locale: Locale(langProvider.appLanguage!),
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,

@@ -14,6 +14,7 @@ import 'package:provider/provider.dart';
 import '../../../core/utils/app_routes.dart';
 import '../../../core/utils/app_styles.dart';
 import '../../../model/event_category_background_image.dart';
+import '../../../providers/language_provider.dart';
 import '../../../providers/theme_provider.dart';
 
 class AddEvent extends StatefulWidget {
@@ -33,7 +34,9 @@ class _AddEventState extends State<AddEvent> {
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
     bool isDark = themeProvider.isDarkMode();
+    bool isArabic = langProvider.appLanguage == "ar";
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.transparentColor,
@@ -45,6 +48,7 @@ class _AddEventState extends State<AddEvent> {
         leading: AppBarButtonWidget(
           iconPath: AppAssets.arrowIcon,
           startMargin: context.width * 0.04,
+          flip: isArabic,
         ),
       ),
       body: SafeArea(

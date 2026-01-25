@@ -78,6 +78,11 @@ class Login extends StatelessWidget {
                   alignment:
                       isEnglish ? Alignment.centerRight : Alignment.centerLeft,
                   child: TextButton(
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      minimumSize: Size.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
                     onPressed: () {
                       // todo:forget password function
                       Navigator.of(
@@ -101,7 +106,8 @@ class Login extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: context.height * 0.005),
+
+                SizedBox(height: context.height * 0.01),
                 ElevatedButton(
                   onPressed: () {
                     // todo:login function
@@ -116,6 +122,7 @@ class Login extends StatelessWidget {
                 ),
                 SizedBox(height: context.height * 0.005),
                 Row(
+                  spacing: 2,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -123,6 +130,11 @@ class Login extends StatelessWidget {
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     TextButton(
+                      style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          minimumSize: Size.zero,
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap
+                      ),
                       onPressed: () {
                         Navigator.of(
                           context,

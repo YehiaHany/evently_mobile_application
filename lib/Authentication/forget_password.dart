@@ -3,10 +3,11 @@ import 'package:evently/core/utils/app_styles.dart';
 import 'package:evently/core/utils/device_dimensions.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import '../core/utils/app_assets.dart';
+import '../home/home_page/widget/app_bar_button_widget.dart';
+import '../providers/language_provider.dart';
 import '../providers/theme_provider.dart';
 
 class ForgetPassword extends StatelessWidget {
@@ -18,7 +19,22 @@ class ForgetPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     bool isDark = themeProvider.isDarkMode();
+    LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
+    bool isArabic = langProvider.appLanguage == "ar";
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.transparentColor,
+        centerTitle: true,
+        title: Text(
+          AppLocalizations.of(context)!.forget_password_title,
+          style: isDark ? AppStyles.medium18White : AppStyles.medium18Black,
+        ),
+        leading: AppBarButtonWidget(
+          iconPath: AppAssets.arrowIcon,
+          startMargin: context.width * 0.04,
+          flip: isArabic,
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -30,54 +46,6 @@ class ForgetPassword extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               spacing: context.height * 0.04,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 8,
-                        ),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color:
-                              themeProvider.isDarkMode()
-                                  ? AppColors.blueVeryDark
-                                  : AppColors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(
-                            color:
-                                themeProvider.isDarkMode()
-                                    ? AppColors.blueDark
-                                    : AppColors.offWhite,
-                            width: 1,
-                          ),
-                        ),
-                        child: SvgPicture.asset(
-                          AppAssets.arrowIcon,
-                          colorFilter: ColorFilter.mode(
-                            themeProvider.isDarkMode()
-                                ? AppColors.white
-                                : AppColors.primaryBlue,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.forget_password_title,
-                      style:
-                          isDark
-                              ? AppStyles.medium18White
-                              : AppStyles.medium18Black,
-                    ),
-                    Icon(Icons.add, color: AppColors.transparentColor),
-                  ],
-                ),
                 Image.asset(
                   AppAssets.changeSettingImage,
                   height: context.height * 0.385,

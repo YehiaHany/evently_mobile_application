@@ -114,6 +114,7 @@ class Register extends StatelessWidget {
                 ),
                 SizedBox(height: context.height * 0.005),
                 Row(
+                  spacing: 3,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -121,6 +122,11 @@ class Register extends StatelessWidget {
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     TextButton(
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                        minimumSize: Size.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
                       onPressed: () {
                         Navigator.of(
                           context,
