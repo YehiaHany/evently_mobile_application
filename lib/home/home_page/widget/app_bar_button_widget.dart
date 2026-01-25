@@ -11,6 +11,7 @@ class AppBarButtonWidget extends StatelessWidget {
   final Color darkIconColor;
   final double startMargin;
   final double endMargin;
+  final bool flip;
 
   AppBarButtonWidget({
     super.key,
@@ -19,6 +20,7 @@ class AppBarButtonWidget extends StatelessWidget {
     required this.iconPath,
     this.lightIconColor = AppColors.primaryBlue,
     this.darkIconColor = AppColors.white,
+    this.flip = false
   });
 
   @override
@@ -51,11 +53,14 @@ class AppBarButtonWidget extends StatelessWidget {
             width: 1,
           ),
         ),
-        child: SvgPicture.asset(
-          iconPath,
-          colorFilter: ColorFilter.mode(
-            themeProvider.isDarkMode() ? darkIconColor : lightIconColor,
-            BlendMode.srcIn,
+        child: Transform.flip(
+          flipX: flip,
+          child: SvgPicture.asset(
+            iconPath,
+            colorFilter: ColorFilter.mode(
+              themeProvider.isDarkMode() ? darkIconColor : lightIconColor,
+              BlendMode.srcIn,
+            ),
           ),
         ),
       ),

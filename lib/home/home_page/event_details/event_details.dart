@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 
 import '../../../core/utils/app_styles.dart';
 import '../../../model/event_category_background_image.dart';
+import '../../../providers/language_provider.dart';
 import '../../../providers/theme_provider.dart';
 
 class EventDetails extends StatefulWidget {
@@ -37,7 +38,9 @@ class _EventDetailsState extends State<EventDetails> {
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
     bool isDark = themeProvider.isDarkMode();
+    bool isArabic = langProvider.appLanguage == "ar";
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.transparentColor,
@@ -47,6 +50,7 @@ class _EventDetailsState extends State<EventDetails> {
           style: isDark ? AppStyles.medium18White : AppStyles.medium18Black,
         ),
         leading: AppBarButtonWidget(
+          flip: isArabic,
           iconPath: AppAssets.arrowIcon,
           startMargin: context.width * 0.04,
         ),

@@ -8,6 +8,7 @@ import '../../core/utils/app_assets.dart';
 import '../../core/utils/app_colors.dart';
 import '../../core/utils/app_routes.dart';
 import '../../core/utils/app_styles.dart';
+import '../../providers/language_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../utils.dart';
 
@@ -26,6 +27,8 @@ class PageTop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
+    bool isArabic = langProvider.appLanguage == "ar";
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -64,15 +67,18 @@ class PageTop extends StatelessWidget {
                 width: 1,
               ),
             ),
-            child: SvgPicture.asset(
-              AppAssets.arrowIcon,
-              colorFilter: ColorFilter.mode(
-                currentIndex == 0
-                    ? AppColors.transparentColor
-                    : themeProvider.isDarkMode()
-                    ? AppColors.white
-                    : AppColors.primaryBlue,
-                BlendMode.srcIn,
+            child: Transform.flip(
+              flipX: isArabic,
+              child: SvgPicture.asset(
+                AppAssets.arrowIcon,
+                colorFilter: ColorFilter.mode(
+                  currentIndex == 0
+                      ? AppColors.transparentColor
+                      : themeProvider.isDarkMode()
+                      ? AppColors.white
+                      : AppColors.primaryBlue,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
           ),
