@@ -30,9 +30,10 @@ Future<void> main() async {
 
   FlutterNativeSplash.preserve(
     widgetsBinding: WidgetsBinding.instance,
-  );wait Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await FirebaseFirestore.instance.disableNetwork();
-  rurunApp( MultiProvider(
+  runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => GetEventProvider()),
         ChangeNotifierProvider(create: (context) => LanguageProvider()),
