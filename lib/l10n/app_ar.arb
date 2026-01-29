@@ -57,6 +57,10 @@
   "signup_link": "إنشاء حساب",
   "login_link": "تسجيل الدخول",
   "or_divider": "أو",
+  "event_title_validation": "يرجى إدخال عنوان الفعالية",
+  "event_description_validation": "يرجى إدخال وصف الفعالية",
+  "event_date_validation": "يرجى اختيار تاريخ الفعالية",
+  "event_time_validation": "يرجى اختيار وقت الفعالية",
   "login_with_google": "تسجيل الدخول باستخدام جوجل",
   "signup_with_google": "إنشاء حساب باستخدام جوجل",
   "event_details_title": "تفاصيل الفعالية"

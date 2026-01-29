@@ -443,6 +443,30 @@ abstract class AppLocalizations {
   /// **'Or'**
   String get or_divider;
 
+  /// No description provided for @event_title_validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter event title'**
+  String get event_title_validation;
+
+  /// No description provided for @event_description_validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter event description'**
+  String get event_description_validation;
+
+  /// No description provided for @event_date_validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select event date'**
+  String get event_date_validation;
+
+  /// No description provided for @event_time_validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select event time'**
+  String get event_time_validation;
+
   /// No description provided for @login_with_google.
   ///
   /// In en, this message translates to:

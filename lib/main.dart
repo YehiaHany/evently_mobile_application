@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evently/Authentication/forget_password.dart';
 import 'package:evently/core/utils/app_colors.dart';
 import 'package:evently/core/utils/app_routes.dart';
@@ -9,26 +10,31 @@ import 'package:evently/home/home_page/home_page.dart';
 import 'package:evently/home/main_page.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/on_boarding_page/on_boarding_starting_page.dart';
+import 'package:evently/providers/get_event_provider.dart';
 import 'package:evently/providers/language_provider.dart';
 import 'package:evently/providers/theme_provider.dart';
 import 'package:evently/utils.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 
 import 'Authentication/login.dart';
 import 'Authentication/register.dart';
+import 'firebase_options.dart';
 import 'home/profile_page/profile_page.dart';
 import 'on_boarding_page/on_boarding_page.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   FlutterNativeSplash.preserve(
     widgetsBinding: WidgetsBinding.instance,
-  );
-  runApp( MultiProvider(
+  );wait Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseFirestore.instance.disableNetwork();
+  rurunApp( MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => GetEventProvider()),
         ChangeNotifierProvider(create: (context) => LanguageProvider()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
       ],
