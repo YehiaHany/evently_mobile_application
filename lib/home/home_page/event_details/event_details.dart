@@ -3,7 +3,6 @@ import 'package:evently/core/utils/app_colors.dart';
 import 'package:evently/core/utils/device_dimensions.dart';
 import 'package:evently/home/home_page/widget/app_bar_button_widget.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/model/event_model.dart';
 import 'package:evently/model/tab_bar_model.dart';
 import 'package:evently/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,6 @@ class EventDetails extends StatefulWidget {
 }
 
 class _EventDetailsState extends State<EventDetails> {
-  List<EventModel> filterList = EventModel.events;
   bool isLottieLoaded = false;
   TextEditingController _eventDescriptionController = TextEditingController();
   String currentCategory = TabBarModel.tabs[1]!;

@@ -5,9 +5,11 @@ import 'package:evently/home/home_page/widget/body_widget.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/model/event_model.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/get_event_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../widget/custom_text_field.dart';
 
@@ -19,11 +21,23 @@ class FavouritePage extends StatefulWidget {
 }
 
 class _FavouritePageState extends State<FavouritePage> {
-  List<EventModel> filterList = EventModel.events;
+  List<EventModel> filterList = [];
   bool isLottieLoaded = false;
+  late GetEventProvider getEventProvider;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      getEventProvider.getAllEventsFromFireStore();
+      filterList = getEventProvider.events;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    getEventProvider = Provider.of<GetEventProvider>(context);
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -72,7 +86,8 @@ class _FavouritePageState extends State<FavouritePage> {
                 itemBuilder: (context, index) {
                   return BodyWidget(title: filterList[index].title,
                     category: filterList[index].category,
-                    date: filterList[index].date,);
+                    date: DateFormat("MMM d, y").format(
+                        filterList[index].date!),);
                 },
               ),
             ),

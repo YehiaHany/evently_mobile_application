@@ -8,13 +8,13 @@ import 'package:evently/home/home_page/widget/tab_bar/event_tab_bar.dart';
 import 'package:evently/home/home_page/widget/theme_icon.dart';
 import 'package:evently/home/home_page/widget/welcome_widget.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/model/event_model.dart';
-import 'package:evently/model/tab_bar_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/get_event_provider.dart';
 import '../../providers/theme_provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,11 +25,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<EventModel> filterList = EventModel.events;
   bool isLottieLoaded = false;
+  late GetEventProvider getEventProvider;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      getEventProvider.getAllEventsFromFireStore();
+    });
+  }
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    getEventProvider = Provider.of<GetEventProvider>(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () {
         Navigator.of(context).pushNamed(AppRoutes.addEventScreen);
@@ -53,10 +63,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              EventTabBar(setIndex: setFilterList),
+              EventTabBar(setIndex: getEventProvider.changeIndex),
               Expanded(
                 child:
-                filterList.isEmpty
+                getEventProvider.filterList.isEmpty
                     ? Column(
                   children: [
                     Opacity(
@@ -94,12 +104,13 @@ class _HomePageState extends State<HomePage> {
                   ],
                 )
                     : ListView.builder(
-                  itemCount: filterList.length,
+                  itemCount: getEventProvider.filterList.length,
                   itemBuilder: (context, index) {
                     return BodyWidget(
-                      title: filterList[index].title,
-                      category: filterList[index].category,
-                      date: filterList[index].date,
+                      title: getEventProvider.filterList[index].title,
+                      category: getEventProvider.filterList[index].category,
+                      date: DateFormat("MMM d, y").format(getEventProvider
+                          .filterList[index].date!),
                     );
                   },
                 ),
@@ -111,14 +122,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void setFilterList(int index) {
-    filterList =
-        EventModel.events.where((event) {
-          if (TabBarModel.tabs[index] == 'all') {
-            return true;
-          }
-          return event.category == TabBarModel.tabs[index];
-        }).toList();
-    setState(() {});
-  }
+
 }

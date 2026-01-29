@@ -184,6 +184,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get or_divider => 'Or';
 
   @override
+  String get event_title_validation => 'Please enter event title';
+
+  @override
+  String get event_description_validation => 'Please enter event description';
+
+  @override
+  String get event_date_validation => 'Please select event date';
+
+  @override
+  String get event_time_validation => 'Please select event time';
+
+  @override
   String get login_with_google => 'Login with Google';
 
   @override

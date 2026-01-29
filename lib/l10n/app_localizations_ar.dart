@@ -184,6 +184,18 @@ class AppLocalizationsAr extends AppLocalizations {
   String get or_divider => 'أو';
 
   @override
+  String get event_title_validation => 'يرجى إدخال عنوان الفعالية';
+
+  @override
+  String get event_description_validation => 'يرجى إدخال وصف الفعالية';
+
+  @override
+  String get event_date_validation => 'يرجى اختيار تاريخ الفعالية';
+
+  @override
+  String get event_time_validation => 'يرجى اختيار وقت الفعالية';
+
+  @override
   String get login_with_google => 'تسجيل الدخول باستخدام جوجل';
 
   @override

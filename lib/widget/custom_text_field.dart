@@ -35,6 +35,7 @@ class CustomTextField extends StatefulWidget {
   final String? Function(String?)? validator;
   final int? maxLines;
   final bool isEnabled;
+  void Function(String)? onChanged;
   bool obscure;
   bool isPassword;
 
@@ -66,7 +67,8 @@ class CustomTextField extends StatefulWidget {
     this.obscure = false,
     this.isPassword = false,
     this.maxLines,
-    this.isEnabled = true
+    this.isEnabled = true,
+    this.onChanged
   });
 
   @override
@@ -81,14 +83,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
     return TextFormField(
       enabled: widget.isEnabled,
-      onTapOutside: (event) {
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
+      // onTapOutside: (event) {
+      //   FocusManager.instance.primaryFocus?.unfocus();
+      // },
       maxLines: widget.maxLines ?? 1,
       obscureText: widget.obscure,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: widget.controller,
       validator: widget.validator,
+      onChanged: widget.onChanged,
       style: widget.textStyle ?? Theme
           .of(context)
           .textTheme

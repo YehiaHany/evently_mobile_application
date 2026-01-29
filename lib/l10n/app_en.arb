@@ -57,6 +57,10 @@
   "signup_link": "Signup",
   "login_link": "Login",
   "or_divider": "Or",
+  "event_title_validation": "Please enter event title",
+  "event_description_validation": "Please enter event description",
+  "event_date_validation": "Please select event date",
+  "event_time_validation": "Please select event time",
   "login_with_google": "Login with Google",
   "signup_with_google": "Sign up with Google",
   "event_details_title": "Event details"
