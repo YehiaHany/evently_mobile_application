@@ -10,7 +10,7 @@ import 'package:evently/home/home_page/home_page.dart';
 import 'package:evently/home/main_page.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/on_boarding_page/on_boarding_starting_page.dart';
-import 'package:evently/providers/get_event_provider.dart';
+import 'package:evently/providers/event_list_provider.dart';
 import 'package:evently/providers/language_provider.dart';
 import 'package:evently/providers/theme_provider.dart';
 import 'package:evently/utils.dart';
@@ -35,7 +35,7 @@ Future<void> main() async {
   await FirebaseFirestore.instance.disableNetwork();
   runApp(MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => GetEventProvider()),
+        ChangeNotifierProvider(create: (context) => EventProvider()),
         ChangeNotifierProvider(create: (context) => LanguageProvider()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
       ],
