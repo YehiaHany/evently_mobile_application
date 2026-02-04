@@ -3,13 +3,11 @@ import 'package:evently/core/utils/app_colors.dart';
 import 'package:evently/core/utils/device_dimensions.dart';
 import 'package:evently/home/home_page/widget/body_widget.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/model/event_model.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/get_event_provider.dart';
+import '../../providers/event_list_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../widget/custom_text_field.dart';
 
@@ -21,23 +19,21 @@ class FavouritePage extends StatefulWidget {
 }
 
 class _FavouritePageState extends State<FavouritePage> {
-  List<EventModel> filterList = [];
   bool isLottieLoaded = false;
-  late GetEventProvider getEventProvider;
+  late EventProvider eventProvider;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      getEventProvider.getAllEventsFromFireStore();
-      filterList = getEventProvider.events;
+      eventProvider.getFavouriteList();
     });
   }
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-    getEventProvider = Provider.of<GetEventProvider>(context);
+    eventProvider = Provider.of<EventProvider>(context);
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -52,7 +48,7 @@ class _FavouritePageState extends State<FavouritePage> {
               suffixIcon: AppAssets.searchIcon,
             ),
             Expanded(
-              child: filterList.isEmpty ?
+              child: eventProvider.favouriteList.isEmpty ?
               Column(
                 children: [
 
@@ -60,10 +56,12 @@ class _FavouritePageState extends State<FavouritePage> {
                     opacity: isLottieLoaded ? 1 : 0,
                     child: Lottie.asset(AppAssets.emptyListAnimation,
                         onLoaded: (composition) {
-                          Future.delayed(Duration(milliseconds: 500), () {
-                            setState(() {
-                              isLottieLoaded = true;
-                            });
+                          Future.delayed(Duration(milliseconds: 200), () {
+                            if (mounted) {
+                              setState(() {
+                                isLottieLoaded = true;
+                              });
+                            }
                           });
                         }),
                   ),
@@ -82,12 +80,10 @@ class _FavouritePageState extends State<FavouritePage> {
 
                 ],
               ) : ListView.builder(
-                itemCount: filterList.length,
+                itemCount: eventProvider.favouriteList.length,
                 itemBuilder: (context, index) {
-                  return BodyWidget(title: filterList[index].title,
-                    category: filterList[index].category,
-                    date: DateFormat("MMM d, y").format(
-                        filterList[index].date!),);
+                  return BodyWidget(
+                    event: eventProvider.favouriteList[index],);
                 },
               ),
             ),

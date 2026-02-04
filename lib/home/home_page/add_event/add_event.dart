@@ -13,10 +13,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/utils/app_routes.dart';
 import '../../../core/utils/app_styles.dart';
 import '../../../model/event_category_background_image.dart';
-import '../../../providers/get_event_provider.dart';
+import '../../../providers/event_list_provider.dart';
 import '../../../providers/language_provider.dart';
 import '../../../providers/theme_provider.dart';
 
@@ -29,8 +28,8 @@ class AddEvent extends StatefulWidget {
 
 class _AddEventState extends State<AddEvent> {
   bool isLottieLoaded = false;
-  TextEditingController _eventTitleController = TextEditingController();
-  TextEditingController _eventDescriptionController = TextEditingController();
+  final TextEditingController _eventTitleController = TextEditingController();
+  final TextEditingController _eventDescriptionController = TextEditingController();
   String currentCategory = TabBarModel.tabs[1]!;
   String title = "";
   String description = "";
@@ -39,13 +38,13 @@ class _AddEventState extends State<AddEvent> {
   String formatDate = "";
   TimeOfDay? _selectedTime;
   String formateTime = "";
-  late GetEventProvider getEventProvider;
+  late EventProvider getEventProvider;
 
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
-    getEventProvider = Provider.of<GetEventProvider>(context);
+    getEventProvider = Provider.of<EventProvider>(context);
     bool isDark = themeProvider.isDarkMode();
     bool isArabic = langProvider.appLanguage == "ar";
     return GestureDetector(
@@ -203,6 +202,13 @@ class _AddEventState extends State<AddEvent> {
     );
   }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _eventTitleController.dispose();
+    _eventDescriptionController.dispose();
+  }
   void _setFilterList(int index) {
     currentCategory = TabBarModel.tabs[index + 1]!;
     setState(() {});

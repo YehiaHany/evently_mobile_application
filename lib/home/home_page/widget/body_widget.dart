@@ -1,7 +1,10 @@
 import 'package:evently/core/utils/device_dimensions.dart';
 import 'package:evently/model/event_category_background_image.dart';
+import 'package:evently/model/event_model.dart';
+import 'package:evently/providers/event_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/utils/app_assets.dart';
@@ -10,15 +13,11 @@ import '../../../core/utils/app_routes.dart';
 import '../../../providers/theme_provider.dart';
 
 class BodyWidget extends StatefulWidget {
-  String category;
-  String title;
-  String date;
+  EventModel event;
 
   BodyWidget({
     super.key,
-    required this.title,
-    required this.category,
-    required this.date,
+    required this.event,
   });
 
   @override
@@ -31,9 +30,11 @@ class _BodyWidgetState extends State<BodyWidget> {
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    EventProvider eventProvider = Provider.of<EventProvider>(context);
+
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)!.pushNamed(AppRoutes.eventDetailsScreen);
+        Navigator.of(context).pushNamed(AppRoutes.eventDetailsScreen);
       },
       child: Container(
         clipBehavior: Clip.antiAlias,
@@ -58,9 +59,9 @@ class _BodyWidgetState extends State<BodyWidget> {
             image: AssetImage(
               themeProvider.isDarkMode()
                   ? EventCategoryBackgroundImages.categoryImagesDark[widget
-                      .category]!
+                  .event.category]!
                   : EventCategoryBackgroundImages.categoryImagesLight[widget
-                      .category]!,
+                  .event.category]!,
             ),
           ),
         ),
@@ -75,7 +76,7 @@ class _BodyWidgetState extends State<BodyWidget> {
                 horizontal: context.width * 0.019,
               ),
               child: Text(
-                widget.date,
+                DateFormat("MMM d, y").format(widget.event.date!),
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
@@ -90,16 +91,15 @@ class _BodyWidgetState extends State<BodyWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    widget.title,
+                    widget.event.title,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   GestureDetector(
                     onTap: () {
-                      isFavourite = !isFavourite;
-                      setState(() {});
+                      eventProvider.updateEvent(widget.event);
                     },
                     child: SvgPicture.asset(
-                      isFavourite
+                      widget.event.isFavourite
                           ? themeProvider.isDarkMode()
                               ? "${AppAssets.heartIcon}SelectedDark.svg"
                               : "${AppAssets.heartIcon}Selected.svg"
