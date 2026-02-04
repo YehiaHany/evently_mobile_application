@@ -4,9 +4,10 @@ import 'package:flutter/foundation.dart';
 import '../model/event_model.dart';
 import '../model/tab_bar_model.dart';
 
-class GetEventProvider extends ChangeNotifier {
+class EventProvider extends ChangeNotifier {
   List<EventModel> events = [];
   List<EventModel> filterList = [];
+  List<EventModel> favouriteList = [];
   int selectedIndex = 0;
 
   void getAllEventsFromFireStore() async {
@@ -38,6 +39,18 @@ class GetEventProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void getFavouriteList() async {
+    var querySnapShot =
+        await FirebaseUtils.getEventsCollection()
+            .where("is_favourite", isEqualTo: true)
+            .get();
+    favouriteList =
+        querySnapShot.docs.map((doc) {
+          return doc.data();
+        }).toList();
+    notifyListeners();
+  }
+
   void getFilterList1() async {
     var querySnapShot =
         await FirebaseUtils.getEventsCollection()
@@ -49,6 +62,19 @@ class GetEventProvider extends ChangeNotifier {
           return doc.data();
         }).toList();
     notifyListeners();
+  }
+
+  void updateEvent(EventModel event) {
+    FirebaseUtils.getEventsCollection()
+        .doc(event.id)
+        .update({"is_favourite": !event.isFavourite})
+        .timeout(
+          Duration(milliseconds: 100),
+          onTimeout: () {
+            selectedIndex == 0 ? getAllEventsFromFireStore() : getFilterList();
+            getFavouriteList();
+          },
+        );
   }
 
   void changeIndex(int index) {

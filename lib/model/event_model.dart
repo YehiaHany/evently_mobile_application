@@ -19,7 +19,7 @@ class EventModel {
   });
 
   EventModel.fromFirestore(Map<String, dynamic> data) :this(
-    id: data["data"] ?? "",
+    id: data["id"] ?? "",
     title: data["title"],
     category: data["category"],
     date: DateTime.fromMillisecondsSinceEpoch(data["date"]),

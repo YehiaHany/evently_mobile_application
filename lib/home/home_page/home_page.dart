@@ -10,11 +10,10 @@ import 'package:evently/home/home_page/widget/welcome_widget.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/get_event_provider.dart';
+import '../../providers/event_list_provider.dart';
 import '../../providers/theme_provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,7 +25,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool isLottieLoaded = false;
-  late GetEventProvider getEventProvider;
+  late EventProvider getEventProvider;
 
   @override
   void initState() {
@@ -39,7 +38,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-    getEventProvider = Provider.of<GetEventProvider>(context);
+    getEventProvider = Provider.of<EventProvider>(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () {
         Navigator.of(context).pushNamed(AppRoutes.addEventScreen);
@@ -107,10 +106,7 @@ class _HomePageState extends State<HomePage> {
                   itemCount: getEventProvider.filterList.length,
                   itemBuilder: (context, index) {
                     return BodyWidget(
-                      title: getEventProvider.filterList[index].title,
-                      category: getEventProvider.filterList[index].category,
-                      date: DateFormat("MMM d, y").format(getEventProvider
-                          .filterList[index].date!),
+                      event: getEventProvider.filterList[index],
                     );
                   },
                 ),
