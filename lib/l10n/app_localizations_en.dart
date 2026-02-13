@@ -202,5 +202,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signup_with_google => 'Sign up with Google';
 
   @override
+  String get email_empty => 'Email cannot be empty';
+
+  @override
+  String get email_invalid => 'Please enter a valid email format';
+
+  @override
+  String get email_exists =>
+      'This email is already registered. Please use another one.';
+
+  @override
+  String get password_empty => 'Password cannot be empty';
+
+  @override
+  String get password_invalid => 'Password must be at least 6 characters';
+
+  @override
+  String get username_empty => 'Username cannot be empty';
+
+  @override
+  String get passwords_do_not_match => 'Passwords do not match';
+
+  @override
   String get event_details_title => 'Event details';
 }

@@ -202,5 +202,27 @@ class AppLocalizationsAr extends AppLocalizations {
   String get signup_with_google => 'إنشاء حساب باستخدام جوجل';
 
   @override
+  String get email_empty => 'البريد الإلكتروني لا يمكن أن يكون فارغاً';
+
+  @override
+  String get email_invalid => 'يرجى إدخال البريد الإلكتروني بشكل صحيح';
+
+  @override
+  String get email_exists =>
+      'هذا البريد الإلكتروني مسجل بالفعل. يرجى استخدام بريد آخر.';
+
+  @override
+  String get password_empty => 'كلمة المرور لا يمكن أن تكون فارغة';
+
+  @override
+  String get password_invalid => 'يجب أن تتكون كلمة المرور من 6 أحرف على الأقل';
+
+  @override
+  String get username_empty => 'اسم المستخدم لا يمكن أن يكون فارغاً';
+
+  @override
+  String get passwords_do_not_match => 'كلمات المرور غير متطابقة';
+
+  @override
   String get event_details_title => 'تفاصيل الفعالية';
 }

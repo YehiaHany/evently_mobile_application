@@ -1,5 +1,6 @@
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/core/utils/app_routes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -17,8 +18,8 @@ class LogoutContainer extends StatelessWidget {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
     return GestureDetector(
-      onTap: () {
-        //todo:logoutFunction
+      onTap: () async {
+        await FirebaseAuth.instance.signOut();
         Navigator.of(context).pushReplacementNamed(AppRoutes.loginScreen);
       },
       child: Container(

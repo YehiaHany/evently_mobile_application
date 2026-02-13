@@ -1,6 +1,6 @@
 import 'package:evently/core/utils/app_colors.dart';
 import 'package:evently/core/utils/app_styles.dart';
-import 'package:evently/core/utils/device_dimensions.dart';
+import 'package:evently/extensions/device_dimensions.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

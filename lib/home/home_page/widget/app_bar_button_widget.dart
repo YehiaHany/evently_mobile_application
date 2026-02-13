@@ -12,6 +12,7 @@ class AppBarButtonWidget extends StatelessWidget {
   final double startMargin;
   final double endMargin;
   final bool flip;
+  final VoidCallback? function;
 
   AppBarButtonWidget({
     super.key,
@@ -20,6 +21,7 @@ class AppBarButtonWidget extends StatelessWidget {
     required this.iconPath,
     this.lightIconColor = AppColors.primaryBlue,
     this.darkIconColor = AppColors.white,
+    this.function,
     this.flip = false
   });
 
@@ -27,7 +29,7 @@ class AppBarButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     return GestureDetector(
-      onTap: () {
+      onTap: function ?? () {
         Navigator.of(context).pop();
       },
       child: Container(

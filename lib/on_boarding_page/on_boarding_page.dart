@@ -1,4 +1,4 @@
-import 'package:evently/core/utils/device_dimensions.dart';
+import 'package:evently/extensions/device_dimensions.dart';
 import 'package:evently/on_boarding_page/widget/bottom_button.dart';
 import 'package:evently/on_boarding_page/widget/page_indicator_dots.dart';
 import 'package:evently/on_boarding_page/widget/page_top.dart';

@@ -1,4 +1,4 @@
-import 'package:evently/core/utils/device_dimensions.dart';
+import 'package:evently/extensions/device_dimensions.dart';
 import 'package:evently/on_boarding_page/widget/page_view_first_half/widget/page_view_item_first_half.dart';
 import 'package:flutter/material.dart';
 
