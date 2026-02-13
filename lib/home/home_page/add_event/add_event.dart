@@ -1,6 +1,7 @@
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/core/utils/app_colors.dart';
-import 'package:evently/core/utils/device_dimensions.dart';
+import 'package:evently/core/utils/app_routes.dart';
+import 'package:evently/extensions/device_dimensions.dart';
 import 'package:evently/firebase_utils.dart';
 import 'package:evently/home/home_page/add_event/widget/category_widget.dart';
 import 'package:evently/home/home_page/add_event/widget/date_or_time_widget.dart';
@@ -60,6 +61,13 @@ class _AddEventState extends State<AddEvent> {
             style: isDark ? AppStyles.medium18White : AppStyles.medium18Black,
           ),
           leading: AppBarButtonWidget(
+            function: () {
+              FocusManager.instance.primaryFocus?.unfocus();
+              Future.delayed(Duration(milliseconds: 200), () {
+                Navigator.of(context).pushReplacementNamed(
+                    AppRoutes.mainScreen);
+              });
+            },
             iconPath: AppAssets.arrowIcon,
             startMargin: context.width * 0.04,
             flip: isArabic,

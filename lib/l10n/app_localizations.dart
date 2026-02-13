@@ -479,6 +479,48 @@ abstract class AppLocalizations {
   /// **'Sign up with Google'**
   String get signup_with_google;
 
+  /// No description provided for @email_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Email cannot be empty'**
+  String get email_empty;
+
+  /// No description provided for @email_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email format'**
+  String get email_invalid;
+
+  /// No description provided for @email_exists.
+  ///
+  /// In en, this message translates to:
+  /// **'This email is already registered. Please use another one.'**
+  String get email_exists;
+
+  /// No description provided for @password_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password cannot be empty'**
+  String get password_empty;
+
+  /// No description provided for @password_invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get password_invalid;
+
+  /// No description provided for @username_empty.
+  ///
+  /// In en, this message translates to:
+  /// **'Username cannot be empty'**
+  String get username_empty;
+
+  /// No description provided for @passwords_do_not_match.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwords_do_not_match;
+
   /// No description provided for @event_details_title.
   ///
   /// In en, this message translates to:

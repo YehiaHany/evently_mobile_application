@@ -1,7 +1,7 @@
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/core/utils/app_colors.dart';
 import 'package:evently/core/utils/app_routes.dart';
-import 'package:evently/core/utils/device_dimensions.dart';
+import 'package:evently/extensions/device_dimensions.dart';
 import 'package:evently/home/home_page/widget/body_widget.dart';
 import 'package:evently/home/home_page/widget/language_container_widget.dart';
 import 'package:evently/home/home_page/widget/tab_bar/event_tab_bar.dart';
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     getEventProvider = Provider.of<EventProvider>(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.of(context).pushNamed(AppRoutes.addEventScreen);
+        Navigator.of(context).pushReplacementNamed(AppRoutes.addEventScreen);
       }, child: Icon(CupertinoIcons.add),),
       body: SafeArea(
         child: Padding(
@@ -66,41 +66,44 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 child:
                 getEventProvider.filterList.isEmpty
-                    ? Column(
-                  children: [
-                    Opacity(
-                      opacity: isLottieLoaded ? 1 : 0,
-                      child: Lottie.asset(
-                        AppAssets.emptyListAnimation,
-                        onLoaded: (composition) {
-                          Future.delayed(Duration(milliseconds: 500), () {
-                            setState(() {
-                              isLottieLoaded = true;
+                    ? SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [
+                      Opacity(
+                        opacity: isLottieLoaded ? 1 : 0,
+                        child: Lottie.asset(
+                          AppAssets.emptyListAnimation,
+                          onLoaded: (composition) {
+                            Future.delayed(Duration(milliseconds: 200), () {
+                              setState(() {
+                                isLottieLoaded = true;
+                              });
                             });
-                          });
-                        },
+                          },
+                        ),
                       ),
-                    ),
-                    isLottieLoaded
-                        ? SizedBox()
-                        : Center(
-                      child: CircularProgressIndicator(
-                        color:
-                        themeProvider.isDarkMode()
-                            ? AppColors.blueAccent
-                            : AppColors.primaryBlue,
-                      ),
-                    ),
-                    Text(
                       isLottieLoaded
-                          ? AppLocalizations.of(context)!.no_events_found
-                          : "",
-                      style: Theme
-                          .of(context)
-                          .textTheme
-                          .bodyMedium,
-                    ),
-                  ],
+                          ? SizedBox()
+                          : Center(
+                        child: CircularProgressIndicator(
+                          color:
+                          themeProvider.isDarkMode()
+                              ? AppColors.blueAccent
+                              : AppColors.primaryBlue,
+                        ),
+                      ),
+                      Text(
+                        isLottieLoaded
+                            ? AppLocalizations.of(context)!.no_events_found
+                            : "",
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .bodyMedium,
+                      ),
+                    ],
+                  ),
                 )
                     : ListView.builder(
                   itemCount: getEventProvider.filterList.length,

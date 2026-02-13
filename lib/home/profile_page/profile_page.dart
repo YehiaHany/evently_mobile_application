@@ -1,5 +1,5 @@
 import 'package:evently/core/utils/app_assets.dart';
-import 'package:evently/core/utils/device_dimensions.dart';
+import 'package:evently/extensions/device_dimensions.dart';
 import 'package:evently/home/profile_page/widgets/language_container.dart';
 import 'package:evently/home/profile_page/widgets/logout_container.dart';
 import 'package:evently/home/profile_page/widgets/theme_mode_container.dart';

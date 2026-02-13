@@ -1,4 +1,4 @@
-import 'package:evently/core/utils/device_dimensions.dart';
+import 'package:evently/extensions/device_dimensions.dart';
 import 'package:evently/model/event_category_background_image.dart';
 import 'package:evently/model/event_model.dart';
 import 'package:evently/providers/event_list_provider.dart';
