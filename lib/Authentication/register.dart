@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../core/utils/app_assets.dart';
+import '../core/utils/dialog_utils.dart';
 import '../providers/language_provider.dart';
 import '../providers/theme_provider.dart';
 
@@ -155,24 +156,63 @@ class _RegisterState extends State<Register> {
                     ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
+                          DialogUtils.showLoading(
+                            context: context,
+                            loadingMessage: AppLocalizations.of(context)!
+                                .loading,
+                            textStyle: Theme
+                                .of(context)
+                                .textTheme
+                                .bodySmall!,
+                          );
                           try {
                             final credential = await FirebaseAuth.instance
                                 .createUserWithEmailAndPassword(
                               email: _emailController.text,
                               password: _passwordController.text,
                             );
-                            Navigator.of(
-                              context,
-                            ).pushReplacementNamed(AppRoutes.mainScreen);
+                            DialogUtils.hideDialog(context: context);
+                            DialogUtils.showMessage(
+                                context: context,
+                                dismissible: false,
+                                message: AppLocalizations.of(context)!
+                                    .register_success,
+                                posActionName: AppLocalizations.of(context)!.ok,
+                                posAction: () {
+                                  Navigator.of(context,).pushReplacementNamed(
+                                      AppRoutes.mainScreen);
+                                }
+                            );
                           } on FirebaseAuthException catch (e) {
-                            if (e.code == 'weak-password') {
-                              print('The password provided is too weak.');
-                            } else if (e.code == 'email-already-in-use') {
-                              print(
-                                  'The account already exists for that email.');
+                            if (!mounted) return;
+                            DialogUtils.hideDialog(context: context);
+                            String message;
+                            switch (e.code) {
+                              case 'weak-password':
+                                message =
+                                    AppLocalizations.of(context)!.weak_password;
+                                break;
+                              case 'email-already-in-use':
+                                message = AppLocalizations.of(context)!
+                                    .email_already_in_use;
+                                break;
+                              case 'invalid-email':
+                                message =
+                                    AppLocalizations.of(context)!.email_invalid;
+                                break;
+                              default:
+                                message = e.message ??
+                                    AppLocalizations.of(context)!
+                                        .authentication_error;
                             }
-                          } catch (e) {
-                            print(e);
+
+                            DialogUtils.showMessage(
+                              title: AppLocalizations.of(context)!.error,
+                              errorColor: AppColors.errorRed,
+                              context: context,
+                              message: message,
+                              posActionName: AppLocalizations.of(context)!.ok,
+                            );
                           }
                         }
                       },

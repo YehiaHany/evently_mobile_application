@@ -88,7 +88,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       // },
       maxLines: widget.maxLines ?? 1,
       obscureText: widget.obscure,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      // autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: widget.controller,
       validator: widget.validator,
       onChanged: widget.onChanged,

@@ -221,6 +221,40 @@ class AppLocalizationsAr extends AppLocalizations {
   String get username_empty => 'اسم المستخدم لا يمكن أن يكون فارغاً';
 
   @override
+  String get loading => 'جاري التحميل...';
+
+  @override
+  String get login_success => 'تم تسجيل الدخول بنجاح';
+
+  @override
+  String get register_success => 'تم انشاء الحساب بنجاح';
+
+  @override
+  String get ok => 'حسناً';
+
+  @override
+  String get error => 'خطأ';
+
+  @override
+  String get user_not_found => 'لا يوجد مستخدم مسجل بهذا البريد الإلكتروني.';
+
+  @override
+  String get wrong_password => 'كلمة المرور التي أدخلتها غير صحيحة.';
+
+  @override
+  String get weak_password => 'كلمة المرور التي أدخلتها ضعيفة.';
+
+  @override
+  String get email_already_in_use =>
+      'هذا البريد الإلكتروني مستخدم بالفعل من قبل حساب آخر.';
+
+  @override
+  String get authentication_error => 'خطأ في المصادقة';
+
+  @override
+  String get something_went_wrong => 'حدث خطأ ما، يرجى المحاولة مرة أخرى.';
+
+  @override
   String get passwords_do_not_match => 'كلمات المرور غير متطابقة';
 
   @override
