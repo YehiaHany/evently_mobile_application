@@ -69,6 +69,17 @@
   "password_empty": "Password cannot be empty",
   "password_invalid": "Password must be at least 6 characters",
   "username_empty": "Username cannot be empty",
+  "loading": "Loading...",
+  "login_success": "Logged in successfully",
+  "register_success": "Registered successfully",
+  "ok": "OK",
+  "error": "Error",
+  "user_not_found": "No user found for that email.",
+  "wrong_password": "Wrong password Entered",
+  "weak_password": "The password provided is too weak.",
+  "email_already_in_use": "This email is already in use by another account.",
+  "authentication_error": "Authentication error",
+  "something_went_wrong": "Something went wrong, please try again.",
   "passwords_do_not_match": "Passwords do not match",
   "event_details_title": "Event details"
 }

@@ -221,6 +221,40 @@ class AppLocalizationsEn extends AppLocalizations {
   String get username_empty => 'Username cannot be empty';
 
   @override
+  String get loading => 'Loading...';
+
+  @override
+  String get login_success => 'Logged in successfully';
+
+  @override
+  String get register_success => 'Registered successfully';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get user_not_found => 'No user found for that email.';
+
+  @override
+  String get wrong_password => 'Wrong password Entered';
+
+  @override
+  String get weak_password => 'The password provided is too weak.';
+
+  @override
+  String get email_already_in_use =>
+      'This email is already in use by another account.';
+
+  @override
+  String get authentication_error => 'Authentication error';
+
+  @override
+  String get something_went_wrong => 'Something went wrong, please try again.';
+
+  @override
   String get passwords_do_not_match => 'Passwords do not match';
 
   @override

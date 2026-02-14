@@ -2,6 +2,7 @@ import 'package:evently/Authentication/widget/custom_google_button.dart';
 import 'package:evently/core/utils/app_colors.dart';
 import 'package:evently/core/utils/app_routes.dart';
 import 'package:evently/core/utils/app_styles.dart';
+import 'package:evently/core/utils/dialog_utils.dart';
 import 'package:evently/extensions/device_dimensions.dart';
 import 'package:evently/extensions/validations.dart';
 import 'package:evently/l10n/app_localizations.dart';
@@ -15,7 +16,6 @@ import '../providers/language_provider.dart';
 import '../providers/theme_provider.dart';
 
 class Login extends StatefulWidget {
-
   Login({super.key});
 
   @override
@@ -112,7 +112,9 @@ class _LoginState extends State<Login> {
                     ),
                     Align(
                       alignment:
-                      isEnglish ? Alignment.centerRight : Alignment.centerLeft,
+                      isEnglish
+                          ? Alignment.centerRight
+                          : Alignment.centerLeft,
                       child: TextButton(
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
@@ -147,21 +149,64 @@ class _LoginState extends State<Login> {
                     ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
+                          DialogUtils.showLoading(
+                            context: context,
+                            loadingMessage: AppLocalizations.of(context)!
+                                .loading,
+                            textStyle: Theme
+                                .of(context)
+                                .textTheme
+                                .bodySmall!,
+                          );
                           try {
                             final credential = await FirebaseAuth.instance
                                 .signInWithEmailAndPassword(
-                                email: _emailController.text,
-                                password: _passwordController.text
+                              email: _emailController.text,
+                              password: _passwordController.text,
                             );
-                            Navigator.of(
-                              context,
-                            ).pushReplacementNamed(AppRoutes.mainScreen);
+                            DialogUtils.hideDialog(context: context);
+                            DialogUtils.showMessage(
+                                context: context,
+                                dismissible: false,
+                                message: AppLocalizations.of(context)!
+                                    .login_success,
+                                posActionName: AppLocalizations.of(context)!.ok,
+                                posAction: () {
+                                  Navigator.of(context,).pushReplacementNamed(
+                                      AppRoutes.mainScreen);
+                                }
+                            );
                           } on FirebaseAuthException catch (e) {
-                            if (e.code == 'user-not-found') {
-                              print('No user found for that email.');
-                            } else if (e.code == 'wrong-password') {
-                              print('Wrong password provided for that user.');
+                            DialogUtils.hideDialog(context: context);
+                            String message;
+                            switch (e.code) {
+                              case 'user-not-found':
+                                message = AppLocalizations.of(context)!
+                                    .user_not_found;
+                                break;
+                              case 'invalid-credential':
+                                message = AppLocalizations.of(context)!
+                                    .wrong_password;
+                                break;
+
+                              case 'invalid-email':
+                                message =
+                                    AppLocalizations.of(context)!.email_invalid;
+                                break;
+
+                              default:
+                                message = e.message ??
+                                    AppLocalizations.of(context)!
+                                        .authentication_error;
                             }
+
+                            DialogUtils.showMessage(
+                              title: AppLocalizations.of(context)!.error,
+                              errorColor: AppColors.errorRed,
+                              context: context,
+                              message: message,
+                              posActionName: AppLocalizations.of(context)!.ok,
+                            );
                           }
                         }
                       },
@@ -187,9 +232,9 @@ class _LoginState extends State<Login> {
                         ),
                         TextButton(
                           style: TextButton.styleFrom(
-                              padding: EdgeInsets.zero,
-                              minimumSize: Size.zero,
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap
+                            padding: EdgeInsets.zero,
+                            minimumSize: Size.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           ),
                           onPressed: () {
                             Navigator.of(
@@ -220,8 +265,10 @@ class _LoginState extends State<Login> {
                         Expanded(
                           child: Divider(
                             thickness: 2,
-                            color: isDark ? AppColors.blueDark : AppColors
-                                .offWhite,
+                            color:
+                            isDark
+                                ? AppColors.blueDark
+                                : AppColors.offWhite,
                             indent: context.width * 0.02,
                             endIndent: context.width * 0.02,
                           ),
@@ -236,8 +283,10 @@ class _LoginState extends State<Login> {
                         Expanded(
                           child: Divider(
                             thickness: 2,
-                            color: isDark ? AppColors.blueDark : AppColors
-                                .offWhite,
+                            color:
+                            isDark
+                                ? AppColors.blueDark
+                                : AppColors.offWhite,
                             indent: context.width * 0.02,
                             endIndent: context.width * 0.02,
                           ),

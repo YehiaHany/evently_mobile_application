@@ -515,6 +515,72 @@ abstract class AppLocalizations {
   /// **'Username cannot be empty'**
   String get username_empty;
 
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
+
+  /// No description provided for @login_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Logged in successfully'**
+  String get login_success;
+
+  /// No description provided for @register_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered successfully'**
+  String get register_success;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
+
+  /// No description provided for @user_not_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No user found for that email.'**
+  String get user_not_found;
+
+  /// No description provided for @wrong_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong password Entered'**
+  String get wrong_password;
+
+  /// No description provided for @weak_password.
+  ///
+  /// In en, this message translates to:
+  /// **'The password provided is too weak.'**
+  String get weak_password;
+
+  /// No description provided for @email_already_in_use.
+  ///
+  /// In en, this message translates to:
+  /// **'This email is already in use by another account.'**
+  String get email_already_in_use;
+
+  /// No description provided for @authentication_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Authentication error'**
+  String get authentication_error;
+
+  /// No description provided for @something_went_wrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong, please try again.'**
+  String get something_went_wrong;
+
   /// No description provided for @passwords_do_not_match.
   ///
   /// In en, this message translates to:
