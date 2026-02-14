@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evently/Authentication/forget_password.dart';
 import 'package:evently/core/utils/app_colors.dart';
 import 'package:evently/core/utils/app_routes.dart';
@@ -13,6 +12,7 @@ import 'package:evently/on_boarding_page/on_boarding_starting_page.dart';
 import 'package:evently/providers/event_list_provider.dart';
 import 'package:evently/providers/language_provider.dart';
 import 'package:evently/providers/theme_provider.dart';
+import 'package:evently/providers/user_provider.dart';
 import 'package:evently/utils.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -32,12 +32,13 @@ Future<void> main() async {
     widgetsBinding: WidgetsBinding.instance,
   );
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await FirebaseFirestore.instance.disableNetwork();
+  // await FirebaseFirestore.instance.disableNetwork();
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => EventProvider()),
         ChangeNotifierProvider(create: (context) => LanguageProvider()),
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => UserProvider()),
       ],
       child: MyApp()));
 }

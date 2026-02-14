@@ -5,6 +5,7 @@ import 'package:evently/core/utils/app_styles.dart';
 import 'package:evently/core/utils/dialog_utils.dart';
 import 'package:evently/extensions/device_dimensions.dart';
 import 'package:evently/extensions/validations.dart';
+import 'package:evently/firebase_utils.dart';
 import 'package:evently/l10n/app_localizations.dart';
 import 'package:evently/widget/custom_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,6 +15,7 @@ import 'package:provider/provider.dart';
 import '../core/utils/app_assets.dart';
 import '../providers/language_provider.dart';
 import '../providers/theme_provider.dart';
+import '../providers/user_provider.dart';
 
 class Login extends StatefulWidget {
   Login({super.key});
@@ -164,6 +166,16 @@ class _LoginState extends State<Login> {
                               email: _emailController.text,
                               password: _passwordController.text,
                             );
+                            var newUser = await FirebaseUtils
+                                .getUserFromFireStore(
+                                credential.user?.uid ?? "");
+                            if (newUser == null) {
+                              return;
+                            }
+                            UserProvider userProvider = Provider.of<
+                                UserProvider>(context, listen: false);
+                            userProvider.updateUser(newUser);
+
                             DialogUtils.hideDialog(context: context);
                             DialogUtils.showMessage(
                                 context: context,

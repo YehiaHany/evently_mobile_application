@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -208,8 +207,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get email_invalid => 'يرجى إدخال البريد الإلكتروني بشكل صحيح';
 
   @override
-  String get email_exists =>
-      'هذا البريد الإلكتروني مسجل بالفعل. يرجى استخدام بريد آخر.';
+  String get email_exists => 'هذا البريد الإلكتروني مسجل بالفعل. يرجى استخدام بريد آخر.';
 
   @override
   String get password_empty => 'كلمة المرور لا يمكن أن تكون فارغة';
@@ -245,8 +243,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get weak_password => 'كلمة المرور التي أدخلتها ضعيفة.';
 
   @override
-  String get email_already_in_use =>
-      'هذا البريد الإلكتروني مستخدم بالفعل من قبل حساب آخر.';
+  String get email_already_in_use => 'هذا البريد الإلكتروني مستخدم بالفعل من قبل حساب آخر.';
 
   @override
   String get authentication_error => 'خطأ في المصادقة';

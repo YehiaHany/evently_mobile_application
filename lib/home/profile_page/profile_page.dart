@@ -4,8 +4,9 @@ import 'package:evently/home/profile_page/widgets/language_container.dart';
 import 'package:evently/home/profile_page/widgets/logout_container.dart';
 import 'package:evently/home/profile_page/widgets/theme_mode_container.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../l10n/app_localizations.dart';
+import '../../providers/user_provider.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -17,6 +18,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
+    UserProvider userProvider = Provider.of<UserProvider>(context);
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.symmetric(
@@ -31,11 +33,11 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               Image.asset(AppAssets.profilePic),
               Text(
-                AppLocalizations.of(context)!.john_safwat,
+                userProvider.user!.name,
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
               Text(
-                "johnsafwat.route@gmail.com",
+                userProvider.user!.email,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               SizedBox(height: context.height * 0.018),

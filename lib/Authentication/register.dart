@@ -4,7 +4,9 @@ import 'package:evently/core/utils/app_routes.dart';
 import 'package:evently/core/utils/app_styles.dart';
 import 'package:evently/extensions/device_dimensions.dart';
 import 'package:evently/extensions/validations.dart';
+import 'package:evently/firebase_utils.dart';
 import 'package:evently/l10n/app_localizations.dart';
+import 'package:evently/model/my_user.dart';
 import 'package:evently/widget/custom_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,7 @@ import '../core/utils/app_assets.dart';
 import '../core/utils/dialog_utils.dart';
 import '../providers/language_provider.dart';
 import '../providers/theme_provider.dart';
+import '../providers/user_provider.dart';
 
 class Register extends StatefulWidget {
 
@@ -171,6 +174,14 @@ class _RegisterState extends State<Register> {
                               email: _emailController.text,
                               password: _passwordController.text,
                             );
+                            UserProvider userProvider = Provider.of<
+                                UserProvider>(context, listen: false);
+                            MyUser newUser = MyUser(
+                                id: credential.user?.uid ?? "",
+                                email: _emailController.text,
+                                name: _nameController.text);
+                            userProvider.updateUser(newUser);
+                            await FirebaseUtils.addUserToFireStore(newUser);
                             DialogUtils.hideDialog(context: context);
                             DialogUtils.showMessage(
                                 context: context,
