@@ -31,10 +31,12 @@ class _BodyWidgetState extends State<BodyWidget> {
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-    EventProvider eventProvider = Provider.of<EventProvider>(context);serProvider userProvider = Provider.of<UserProvider>(context);
-    rreturn GestureDetector(
+    EventProvider eventProvider = Provider.of<EventProvider>(context);
+    UserProvider userProvider = Provider.of<UserProvider>(context);
+    return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(AppRoutes.eventDetailsScreen);
+        Navigator.of(context).pushNamed(
+            AppRoutes.eventDetailsScreen, arguments: widget.event);
       },
       child: Container(
         clipBehavior: Clip.antiAlias,

@@ -259,5 +259,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwords_do_not_match => 'Passwords do not match';
 
   @override
+  String get edit_event_title => 'Edit event';
+
+  @override
   String get event_details_title => 'Event details';
 }

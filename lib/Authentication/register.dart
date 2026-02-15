@@ -10,6 +10,7 @@ import 'package:evently/model/my_user.dart';
 import 'package:evently/widget/custom_text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 
 import '../core/utils/app_assets.dart';
@@ -159,6 +160,7 @@ class _RegisterState extends State<Register> {
                     SizedBox(height: context.height * 0.02),
                     ElevatedButton(
                       onPressed: () async {
+                        FocusManager.instance.primaryFocus?.unfocus();
                         if (_formKey.currentState!.validate()) {
                           DialogUtils.showLoading(
                             context: context,
@@ -317,13 +319,85 @@ class _RegisterState extends State<Register> {
                     ),
                     SizedBox(height: context.height * 0.005),
                     CustomGoogleButton(
+                      function: () async {
+                        DialogUtils.showLoading(
+                          context: context,
+                          loadingMessage: AppLocalizations.of(context)!
+                              .loading,
+                          textStyle: Theme
+                              .of(context)
+                              .textTheme
+                              .bodySmall!,
+                        );
+                        try {
+                          User? user = await signInWithGoogle();
+                          if (user == null) {
+                            DialogUtils.hideDialog(context: context);
+                            DialogUtils.showMessage(
+                              title: AppLocalizations.of(context)!.error,
+                              customColor: AppColors.errorRed,
+                              context: context,
+                              dismissible: false,
+                              message: AppLocalizations.of(context)!
+                                  .authentication_error,
+                              posActionName: AppLocalizations.of(context)!.ok,
+                            );
+                            return; // silent cancel
+                          }
+                          MyUser? newUser = await FirebaseUtils
+                              .getUserFromFireStore(
+                              user?.uid ?? "");
+                          if (newUser == null) {
+                            newUser = MyUser(id: user?.uid ?? "",
+                              email: user?.email ?? "",
+                              name: user?.displayName ?? "",);
+                            await FirebaseUtils.addUserToFireStore(newUser);
+                          }
+                          UserProvider userProvider = Provider.of<UserProvider>(
+                              context, listen: false);
+                          userProvider.updateUser(newUser);
+                          var getEventProvider = Provider.of<EventProvider>(
+                              context, listen: false);
+                          getEventProvider.changeIndex(
+                              0, userProvider.user!.id);
+                          getEventProvider.getFavouriteList(
+                              userProvider.user!.id);
+                          await FirebaseUtils.addUserToFireStore(newUser);
+                          DialogUtils.hideDialog(context: context);
+                          DialogUtils.showMessage(
+                              title: AppLocalizations.of(context)!.success,
+                              customColor: AppColors.successGreen,
+                              context: context,
+                              dismissible: false,
+                              message: AppLocalizations.of(context)!
+                                  .register_success,
+                              posActionName: AppLocalizations.of(context)!.ok,
+                              posAction: () {
+                                Navigator.of(context,).pushReplacementNamed(
+                                    AppRoutes.mainScreen);
+                              }
+                          );
+                        }
+                        catch (e) {
+                          DialogUtils.hideDialog(context: context);
+                          DialogUtils.showMessage(
+                            title: AppLocalizations.of(context)!.error,
+                            customColor: AppColors.errorRed,
+                            context: context,
+                            dismissible: false,
+                            message: AppLocalizations.of(context)!
+                                .authentication_error,
+                            posActionName: AppLocalizations.of(context)!.ok,
+                          );
+                        }
+                      },
                       child: Row(
                         spacing: 16,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(AppAssets.googleIcon),
                           Text(
-                            AppLocalizations.of(context)!.signup_with_google,
+                            AppLocalizations.of(context)!.login_with_google,
                             style:
                             isDark
                                 ? AppStyles.medium18BlueAccent
@@ -340,5 +414,26 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
+  }
+
+  Future<User?> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth = await googleUser
+        ?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    final UserCredential userCredential = await FirebaseAuth.instance
+        .signInWithCredential(credential);
+    ;
+    // Once signed in, return the UserCredential
+    return userCredential.user;
   }
 }
