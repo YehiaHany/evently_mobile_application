@@ -581,6 +581,12 @@ abstract class AppLocalizations {
   /// **'Something went wrong, please try again.'**
   String get something_went_wrong;
 
+  /// No description provided for @success.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get success;
+
   /// No description provided for @passwords_do_not_match.
   ///
   /// In en, this message translates to:

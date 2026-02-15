@@ -5,8 +5,9 @@ import 'package:provider/provider.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../model/tab_bar_model.dart';
 import '../../../../providers/language_provider.dart';
+import '../../../../providers/user_provider.dart';
 
-typedef setTabIndex = void Function(int);
+typedef setTabIndex = void Function(int, String);
 
 class EventTabBar extends StatefulWidget {
   setTabIndex setIndex;
@@ -24,6 +25,7 @@ class _EventTabBarState extends State<EventTabBar> {
   @override
   Widget build(BuildContext context) {
     LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
+    UserProvider userProvider = Provider.of<UserProvider>(context);
     eventNameList = TabBarModel.getEventNameList(context);
     return DefaultTabController(
       length: eventNameList.length,
@@ -38,7 +40,7 @@ class _EventTabBarState extends State<EventTabBar> {
         indicatorColor: AppColors.transparentColor,
         onTap: (index) {
           selectedIndex = index;
-          widget.setIndex(index);
+          widget.setIndex(index, userProvider.user!.id);
           setState(() {});
         },
         tabs:

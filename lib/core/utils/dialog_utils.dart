@@ -47,7 +47,7 @@ class DialogUtils {
   static void showMessage({
     required BuildContext context,
     required String message,
-    Color? errorColor,
+    Color? customColor,
     String title = "",
     String? posActionName,
     String? negActionName,
@@ -90,7 +90,7 @@ class DialogUtils {
         }
         return AlertDialog(
           content: Text(message, style: Theme.of(context).textTheme.bodySmall),
-          title: Text(title, style: mainStyle.copyWith(color: errorColor)),
+          title: Text(title, style: mainStyle.copyWith(color: customColor)),
           actions: actions,
           backgroundColor: isDark ? AppColors.blueVeryDark : AppColors.white,
           surfaceTintColor: Colors.transparent,

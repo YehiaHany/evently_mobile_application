@@ -11,6 +11,7 @@ import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_routes.dart';
 import '../../../providers/theme_provider.dart';
+import '../../../providers/user_provider.dart';
 
 class BodyWidget extends StatefulWidget {
   EventModel event;
@@ -30,9 +31,8 @@ class _BodyWidgetState extends State<BodyWidget> {
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
-    EventProvider eventProvider = Provider.of<EventProvider>(context);
-
-    return GestureDetector(
+    EventProvider eventProvider = Provider.of<EventProvider>(context);serProvider userProvider = Provider.of<UserProvider>(context);
+    rreturn GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(AppRoutes.eventDetailsScreen);
       },
@@ -96,7 +96,8 @@ class _BodyWidgetState extends State<BodyWidget> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      eventProvider.updateEvent(widget.event);
+                      eventProvider.updateIsFavourite(
+                          widget.event, userProvider.user!.id);
                     },
                     child: SvgPicture.asset(
                       widget.event.isFavourite
