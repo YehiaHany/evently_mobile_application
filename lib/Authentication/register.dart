@@ -331,9 +331,28 @@ class _RegisterState extends State<Register> {
                         );
                         try {
                           User? user = await signInWithGoogle();
-                          MyUser newUser = MyUser(id: user?.uid ?? "",
-                            email: user?.email ?? "",
-                            name: user?.displayName ?? "",);
+                          if (user == null) {
+                            DialogUtils.hideDialog(context: context);
+                            DialogUtils.showMessage(
+                              title: AppLocalizations.of(context)!.error,
+                              customColor: AppColors.errorRed,
+                              context: context,
+                              dismissible: false,
+                              message: AppLocalizations.of(context)!
+                                  .authentication_error,
+                              posActionName: AppLocalizations.of(context)!.ok,
+                            );
+                            return; // silent cancel
+                          }
+                          MyUser? newUser = await FirebaseUtils
+                              .getUserFromFireStore(
+                              user?.uid ?? "");
+                          if (newUser == null) {
+                            newUser = MyUser(id: user?.uid ?? "",
+                              email: user?.email ?? "",
+                              name: user?.displayName ?? "",);
+                            await FirebaseUtils.addUserToFireStore(newUser);
+                          }
                           UserProvider userProvider = Provider.of<UserProvider>(
                               context, listen: false);
                           userProvider.updateUser(newUser);
