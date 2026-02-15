@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 
 import '../../providers/event_list_provider.dart';
 import '../../providers/theme_provider.dart';
+import '../../providers/user_provider.dart';
 import '../../widget/custom_text_field.dart';
 
 class FavouritePage extends StatefulWidget {
@@ -21,19 +22,20 @@ class FavouritePage extends StatefulWidget {
 class _FavouritePageState extends State<FavouritePage> {
   bool isLottieLoaded = false;
   late EventProvider eventProvider;
-
+  late UserProvider userProvider;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      eventProvider.getFavouriteList();
+      eventProvider.getFavouriteList(userProvider.user!.id);
     });
   }
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     eventProvider = Provider.of<EventProvider>(context);
+    userProvider = Provider.of<UserProvider>(context);
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.symmetric(

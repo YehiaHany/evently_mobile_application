@@ -8,6 +8,7 @@ import 'package:evently/home/home_page/widget/tab_bar/event_tab_bar.dart';
 import 'package:evently/home/home_page/widget/theme_icon.dart';
 import 'package:evently/home/home_page/widget/welcome_widget.dart';
 import 'package:evently/l10n/app_localizations.dart';
+import 'package:evently/providers/user_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -26,22 +27,24 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool isLottieLoaded = false;
   late EventProvider getEventProvider;
+  late UserProvider userProvider;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      getEventProvider.getAllEventsFromFireStore();
+      getEventProvider.getAllEventsFromFireStore(userProvider.user!.id);
     });
   }
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     getEventProvider = Provider.of<EventProvider>(context);
+    userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.of(context).pushReplacementNamed(AppRoutes.addEventScreen);
+        Navigator.of(context).pushNamed(AppRoutes.addEventScreen);
       }, child: Icon(CupertinoIcons.add),),
       body: SafeArea(
         child: Padding(

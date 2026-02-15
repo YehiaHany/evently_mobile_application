@@ -80,6 +80,7 @@
   "email_already_in_use": "This email is already in use by another account.",
   "authentication_error": "Authentication error",
   "something_went_wrong": "Something went wrong, please try again.",
+  "success": "Success",
   "passwords_do_not_match": "Passwords do not match",
   "event_details_title": "Event details"
 }

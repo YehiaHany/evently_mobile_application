@@ -19,6 +19,7 @@ import '../../../model/event_category_background_image.dart';
 import '../../../providers/event_list_provider.dart';
 import '../../../providers/language_provider.dart';
 import '../../../providers/theme_provider.dart';
+import '../../../providers/user_provider.dart';
 
 class AddEvent extends StatefulWidget {
   AddEvent({super.key});
@@ -45,6 +46,7 @@ class _AddEventState extends State<AddEvent> {
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
+    UserProvider userProvider = Provider.of<UserProvider>(context);
     getEventProvider = Provider.of<EventProvider>(context);
     bool isDark = themeProvider.isDarkMode();
     bool isArabic = langProvider.appLanguage == "ar";
@@ -190,7 +192,7 @@ class _AddEventState extends State<AddEvent> {
                     ElevatedButton(
                       onPressed: () {
                         // todo:add event function
-                        addEvent();
+                        addEvent(userProvider.user!.id);
                       },
                       child: Text(
                         AppLocalizations.of(context)!.add_event_title,
@@ -222,19 +224,24 @@ class _AddEventState extends State<AddEvent> {
     setState(() {});
   }
 
-  void addEvent() {
+  void addEvent(String uId) {
     if (_formKey.currentState?.validate() == true) {
       EventModel event = EventModel(title: title,
           category: currentCategory,
           date: _selectedDate,
           time: formateTime,
           description: description);
-      FirebaseUtils.addEventToFireStore(event).timeout(
-          Duration(seconds: 1), onTimeout: () {
+      FirebaseUtils.addEventToFireStore(event, uId).then((value) {
         print("Event Added");
-        getEventProvider.getAllEventsFromFireStore();
+        getEventProvider.getAllEventsFromFireStore(uId);
         Navigator.of(context).pop();
-      });
+      })
+      //     .timeout(
+      //     Duration(seconds: 1), onTimeout: () {
+      //   getEventProvider.getAllEventsFromFireStore(uId);
+      //   Navigator.of(context).pop();
+      // })
+          ;
     }
   }
 

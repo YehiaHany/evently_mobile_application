@@ -14,6 +14,7 @@ import 'package:provider/provider.dart';
 
 import '../core/utils/app_assets.dart';
 import '../core/utils/dialog_utils.dart';
+import '../providers/event_list_provider.dart';
 import '../providers/language_provider.dart';
 import '../providers/theme_provider.dart';
 import '../providers/user_provider.dart';
@@ -181,9 +182,17 @@ class _RegisterState extends State<Register> {
                                 email: _emailController.text,
                                 name: _nameController.text);
                             userProvider.updateUser(newUser);
+                            var getEventProvider = Provider.of<EventProvider>(
+                                context, listen: false);
+                            getEventProvider.changeIndex(
+                                0, userProvider.user!.id);
+                            getEventProvider.getFavouriteList(
+                                userProvider.user!.id);
                             await FirebaseUtils.addUserToFireStore(newUser);
                             DialogUtils.hideDialog(context: context);
                             DialogUtils.showMessage(
+                                title: AppLocalizations.of(context)!.success,
+                                customColor: AppColors.successGreen,
                                 context: context,
                                 dismissible: false,
                                 message: AppLocalizations.of(context)!
@@ -219,7 +228,7 @@ class _RegisterState extends State<Register> {
 
                             DialogUtils.showMessage(
                               title: AppLocalizations.of(context)!.error,
-                              errorColor: AppColors.errorRed,
+                              customColor: AppColors.errorRed,
                               context: context,
                               message: message,
                               posActionName: AppLocalizations.of(context)!.ok,
