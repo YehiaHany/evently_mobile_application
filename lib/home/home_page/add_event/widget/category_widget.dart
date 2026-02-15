@@ -9,8 +9,9 @@ typedef setTabIndex = void Function(int);
 
 class CategoryWidget extends StatefulWidget {
   setTabIndex setIndex;
+  int startIndex;
 
-  CategoryWidget({super.key, required this.setIndex});
+  CategoryWidget({super.key, required this.setIndex, this.startIndex = 0});
 
   @override
   State<CategoryWidget> createState() => _CategoryWidgetState();
@@ -18,7 +19,14 @@ class CategoryWidget extends StatefulWidget {
 
 class _CategoryWidgetState extends State<CategoryWidget> {
   List<String> eventNameList = [];
-  int selectedIndex = 0;
+  late int selectedIndex;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    selectedIndex = widget.startIndex;
+  }
 
   @override
   Widget build(BuildContext context) {

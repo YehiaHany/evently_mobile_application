@@ -82,5 +82,6 @@
   "something_went_wrong": "Something went wrong, please try again.",
   "success": "Success",
   "passwords_do_not_match": "Passwords do not match",
+  "edit_event_title": "Edit event",
   "event_details_title": "Event details"
 }

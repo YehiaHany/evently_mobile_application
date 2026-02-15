@@ -50,4 +50,8 @@ class AppAssets{
   static const clockIcon = "${baseUrl}clock.svg";
   static const trashIcon = "${baseUrl}trash.svg";
   static const editIcon = "${baseUrl}edit.svg";
+  static const tickIcon = "${baseUrl}tick.svg";
+  static const crossIcon = "${baseUrl}cross.svg";
+  static const crossMediumIcon = "${baseUrl}cross_medium.svg";
+  static const crossLargeIcon = "${baseUrl}cross_large.svg";
 }

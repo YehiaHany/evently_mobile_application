@@ -82,6 +82,7 @@
   "something_went_wrong": "حدث خطأ ما، يرجى المحاولة مرة أخرى.",
   "success": "نجاح",
   "passwords_do_not_match": "كلمات المرور غير متطابقة",
+  "edit_event_title": "تعديل الفعالية",
   "event_details_title": "تفاصيل الفعالية"
 
 }

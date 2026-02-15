@@ -1,18 +1,22 @@
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/core/utils/app_colors.dart';
+import 'package:evently/core/utils/app_routes.dart';
 import 'package:evently/extensions/device_dimensions.dart';
 import 'package:evently/home/home_page/widget/app_bar_button_widget.dart';
 import 'package:evently/l10n/app_localizations.dart';
-import 'package:evently/model/tab_bar_model.dart';
 import 'package:evently/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/utils/app_styles.dart';
 import '../../../model/event_category_background_image.dart';
+import '../../../model/event_model.dart';
+import '../../../providers/event_list_provider.dart';
 import '../../../providers/language_provider.dart';
 import '../../../providers/theme_provider.dart';
+import '../../../providers/user_provider.dart';
 
 class EventDetails extends StatefulWidget {
   EventDetails({super.key});
@@ -24,7 +28,6 @@ class EventDetails extends StatefulWidget {
 class _EventDetailsState extends State<EventDetails> {
   bool isLottieLoaded = false;
   TextEditingController _eventDescriptionController = TextEditingController();
-  String currentCategory = TabBarModel.tabs[1]!;
 
   @override
   void initState() {
@@ -37,8 +40,15 @@ class _EventDetailsState extends State<EventDetails> {
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     LanguageProvider langProvider = Provider.of<LanguageProvider>(context);
+    EventProvider eventProvider = Provider.of<EventProvider>(context);
+    UserProvider userProvider = Provider.of<UserProvider>(context);
     bool isDark = themeProvider.isDarkMode();
     bool isArabic = langProvider.appLanguage == "ar";
+    EventModel event = ModalRoute
+        .of(context)!
+        .settings
+        .arguments as EventModel;
+    _eventDescriptionController.text = event.description;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.transparentColor,
@@ -53,28 +63,25 @@ class _EventDetailsState extends State<EventDetails> {
           startMargin: context.width * 0.04,
         ),
         actions: [
-          InkWell(
-            onTap: () {
-              //todo edit function
+          AppBarButtonWidget(
+            function: () {
+              Navigator.of(context).pushNamed(
+                  AppRoutes.editEventScreen, arguments: event);
             },
-            child: AppBarButtonWidget(
-              iconPath: AppAssets.editIcon,
-              darkIconColor: AppColors.blueAccent,
-              startMargin: 0,
-              endMargin: 8,
-            ),
+            iconPath: AppAssets.editIcon,
+            darkIconColor: AppColors.blueAccent,
+            startMargin: 0,
+            endMargin: 8,
           ),
-          InkWell(
-            onTap: () {
-              //todo delete function
+          AppBarButtonWidget(
+            function: () async {
+              eventProvider.deleteEvent(userProvider.user!.id, event, context);
             },
-            child: AppBarButtonWidget(
-              iconPath: AppAssets.trashIcon,
-              lightIconColor: AppColors.errorRed,
-              darkIconColor: AppColors.errorRed,
-              startMargin: 0,
-              endMargin: context.width * 0.04,
-            ),
+            iconPath: AppAssets.trashIcon,
+            lightIconColor: AppColors.errorRed,
+            darkIconColor: AppColors.errorRed,
+            startMargin: 0,
+            endMargin: context.width * 0.04,
           ),
         ],
       ),
@@ -101,14 +108,14 @@ class _EventDetailsState extends State<EventDetails> {
                       fit: BoxFit.fill,
                       themeProvider.isDarkMode()
                           ? EventCategoryBackgroundImages
-                              .categoryImagesDark[currentCategory]!
+                          .categoryImagesDark[event.category]!
                           : EventCategoryBackgroundImages
-                              .categoryImagesLight[currentCategory]!,
+                          .categoryImagesLight[event.category]!,
                     ),
                   ),
                 ),
                 Text(
-                  AppLocalizations.of(context)!.event_title_label,
+                  event.title,
                   style:
                       isDark
                           ? AppStyles.medium18White
@@ -135,15 +142,15 @@ class _EventDetailsState extends State<EventDetails> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "21 Jan",
+                          Text(DateFormat("MMM d, y").format(event.date!)
+                            ,
                             style:
                                 isDark
                                     ? AppStyles.medium16White
                                     : AppStyles.medium16Black,
                           ),
                           Text(
-                            "12:00 PM",
+                            event.time,
                             style:
                                 isDark
                                     ? AppStyles.medium16GrayBorder

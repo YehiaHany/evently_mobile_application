@@ -6,8 +6,9 @@ import '../../providers/theme_provider.dart';
 
 class CustomGoogleButton extends StatelessWidget {
   Widget child;
+  VoidCallback? function;
 
-  CustomGoogleButton({super.key, required this.child});
+  CustomGoogleButton({super.key, required this.child, this.function});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class CustomGoogleButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         //todo:google authentication
+        function?.call();
       },
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(

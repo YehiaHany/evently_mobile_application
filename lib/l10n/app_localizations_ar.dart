@@ -259,5 +259,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwords_do_not_match => 'كلمات المرور غير متطابقة';
 
   @override
+  String get edit_event_title => 'تعديل الفعالية';
+
+  @override
   String get event_details_title => 'تفاصيل الفعالية';
 }
